@@ -26,42 +26,42 @@ export function HeroBanner() {
           <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* LEFT COLUMN: HERO HEADLINE & CTAs MATCHING SCREENSHOT 2 */}
+            {/* LEFT COLUMN: HERO HEADLINE & HIGH-CONTRAST CTAs (RESTORED AS REQUESTED) */}
             <div className="lg:col-span-6 flex flex-col items-start text-left">
-              {/* Season Tag matching Screenshot 2 */}
-              <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
-                <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#FF6A00] uppercase">
-                  THE NEW SEASON
+              {/* Season Pill Badge */}
+              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-orange-200 shadow-xs mb-5">
+                <Sparkles className="w-4 h-4 text-[#FF6A00] animate-pulse" />
+                <span className="text-xs font-black tracking-widest text-[#FF6A00] uppercase">
+                  NEW COLLECTION 2026
                 </span>
               </div>
 
-              {/* Bold Marketplace Headline matching Screenshot 2 */}
-              <h1 className="text-3xl sm:text-5xl lg:text-[3.75rem] font-black text-gray-950 tracking-tight leading-[1.08] mb-4">
-                Everything you<br className="hidden sm:inline" />
-                {" "}want.{" "}
-                <span className="text-[#FF6A00]">
-                  All in one<br className="hidden sm:inline" /> place.
-                </span>
+              {/* Bold Marketplace Headline */}
+              <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-black text-gray-950 tracking-tight leading-[1.08] mb-4">
+                Discover The Best<br />
+                <span className="text-[#FF6A00]">Products Online.</span>
               </h1>
 
-              {/* Subtitle matching Screenshot 2 */}
+              {/* Subtitle */}
               <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed max-w-lg mb-7">
-                Discover fashion, electronics, lifestyle products and more from trusted sellers.
+                Shop top-quality products at unbeatable prices across fashion, next-gen electronics, footwear, and beauty with lightning-fast delivery.
               </p>
 
-              {/* High-Contrast Action Buttons matching Screenshot 2 */}
+              {/* High-Contrast Action Buttons */}
               <div className="flex items-center gap-3.5 sm:gap-4 flex-wrap mb-8 w-full sm:w-auto">
+                {/* Shop Now Primary Button with Solid Orange & Bold White Text */}
                 <Link
                   href="/products"
-                  className="bg-[#FF6A00] hover:bg-[#E85D00] text-white font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-xl shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95 group"
+                  className="bg-[#FF6A00] hover:bg-[#E85D00] text-white font-black text-sm sm:text-base px-8 py-4 rounded-full shadow-lg shadow-orange-500/35 flex items-center justify-center gap-2.5 transition-all hover:scale-[1.03] active:scale-95 group border-2 border-orange-400/40"
                 >
-                  <span>Shop Now</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="text-white font-extrabold tracking-wide">Shop Now</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:translate-x-1 transition-transform" />
                 </Link>
 
+                {/* Secondary Button */}
                 <Link
                   href="/products"
-                  className="bg-white hover:bg-gray-50 text-gray-800 font-bold text-sm sm:text-base px-8 py-3.5 rounded-xl border border-gray-200 shadow-xs transition-all hover:scale-[1.02] active:scale-95 text-center"
+                  className="bg-white hover:bg-gray-50 text-gray-900 font-bold text-sm sm:text-base px-8 py-4 rounded-full border border-gray-300 shadow-xs transition-all hover:scale-[1.02] active:scale-95 text-center"
                 >
                   Explore Collection
                 </Link>
