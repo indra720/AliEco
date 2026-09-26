@@ -10,6 +10,8 @@ import {
   Truck,
   ShieldCheck,
   RotateCcw,
+  Star,
+  Flame,
 } from "lucide-react";
 
 export function HeroBanner() {
@@ -83,6 +85,26 @@ export function HeroBanner() {
 
             {/* RIGHT COLUMN: 3D LUXURY PRODUCTS (100% SEPARATE & FLOATING, ZERO ROUNDED VIGNETTE/BACKGROUND) */}
             <div className="lg:col-span-7 relative flex items-center justify-center lg:justify-end py-2 sm:py-4">
+              {/* Floating Social Proof Badge (Option 2) - Fills center-left gap with high-trust review score */}
+              <div className="hidden sm:flex items-center gap-3 absolute top-[44%] left-0 xl:-left-6 z-20 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-orange-200/90 shadow-lg shadow-orange-500/10 hover:scale-105 transition-all">
+                <div className="w-9 h-9 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center shrink-0">
+                  <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-black text-gray-900">4.9 / 5.0</span>
+                    <span className="text-[10px] font-bold text-[#FF6A00] bg-orange-100/70 px-1.5 py-0.5 rounded-full">Top Rated</span>
+                  </div>
+                  <p className="text-[11px] font-medium text-gray-500">50K+ Happy Shoppers</p>
+                </div>
+              </div>
+
+              {/* Floating Launch Offer Pill (Option 2) - Adds promotional excitement */}
+              <div className="hidden md:flex items-center gap-2 absolute top-0 right-4 lg:right-10 z-20 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-orange-200/90 shadow-md shadow-orange-500/10 hover:scale-105 transition-all">
+                <Flame className="w-4 h-4 text-[#FF6A00] fill-[#FF6A00]" />
+                <span className="text-xs font-black text-gray-900">Special Offer: <span className="text-[#FF6A00]">Up to 60% OFF</span></span>
+              </div>
+
               {/* Seamless 3D Floating Products Container - Expanded to fill middle void and balance layout */}
               <div className="relative w-full max-w-[680px] xl:max-w-[740px] aspect-[4/3] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
                 <Image
