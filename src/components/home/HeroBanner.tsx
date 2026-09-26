@@ -35,10 +35,10 @@ export function HeroBanner() {
                 </span>
               </div>
 
-              {/* Bold Marketplace Headline - Relaxed line-height so lines never touch */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-black text-gray-950 tracking-tight leading-[1.18] mb-3.5">
-                Discover The Best<br />
-                <span className="text-[#FF6A00]">Products Online.</span>
+              {/* Bold Marketplace Headline - Guaranteed clear gap between lines */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.7rem] xl:text-[3.15rem] font-black text-gray-950 tracking-tight flex flex-col gap-2.5 sm:gap-3.5 mb-4">
+                <span className="leading-tight">Discover The Best</span>
+                <span className="text-[#FF6A00] leading-tight">Products Online.</span>
               </h1>
 
               {/* Subtitle */}
