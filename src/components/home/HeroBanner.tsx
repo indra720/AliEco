@@ -19,39 +19,39 @@ export function HeroBanner() {
     <section className="w-full bg-white py-1 sm:py-1.5">
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Canvas with Warm Peach / Linen Tone matching Screenshot 2 */}
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#FAF0E6] via-[#FDF5ED] to-[#FFF8F2] border border-orange-200/60 px-5 pt-5 pb-5 sm:px-8 sm:pt-6 sm:pb-6 lg:px-10 lg:pt-6 lg:pb-7 shadow-sm">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#FAF0E6] via-[#FDF5ED] to-[#FFF8F2] border border-orange-200/60 px-5 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-5 shadow-sm">
           {/* Subtle Ambient Lighting */}
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
-            {/* LEFT COLUMN: HERO HEADLINE & CTAs (RESTORED CLEAN & SPACIOUS AS REQUESTED) */}
-            <div className="lg:col-span-5 flex flex-col items-start text-left">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+            {/* LEFT COLUMN: HERO HEADLINE & CTAs (CLEAN, PROPER LINE SPACING & NO TOUCHING) */}
+            <div className="lg:col-span-6 flex flex-col items-start text-left">
               {/* Season Pill Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-orange-200 shadow-xs mb-5">
+              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-orange-200 shadow-xs mb-3.5">
                 <Sparkles className="w-4 h-4 text-[#FF6A00] animate-pulse" />
                 <span className="text-xs font-black tracking-widest text-[#FF6A00] uppercase">
                   NEW COLLECTION 2026
                 </span>
               </div>
 
-              {/* Bold Marketplace Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[2.9rem] xl:text-[3.4rem] font-black text-gray-950 tracking-tight leading-[1.08] mb-4">
+              {/* Bold Marketplace Headline - Relaxed line-height so lines never touch */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-black text-gray-950 tracking-tight leading-[1.18] mb-3.5">
                 Discover The Best<br />
                 <span className="text-[#FF6A00]">Products Online.</span>
               </h1>
 
               {/* Subtitle */}
-              <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed max-w-lg mb-7">
+              <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed max-w-lg mb-5">
                 Shop top-quality products at unbeatable prices across fashion, next-gen electronics, footwear, and beauty with lightning-fast delivery.
               </p>
 
               {/* High-Contrast Action Buttons */}
-              <div className="flex items-center gap-3.5 sm:gap-4 flex-wrap mb-8 w-full sm:w-auto">
+              <div className="flex items-center gap-3.5 sm:gap-4 flex-wrap mb-5 w-full sm:w-auto">
                 {/* Shop Now Primary Button */}
                 <Link
                   href="/products"
-                  className="bg-[#FF6A00] hover:bg-[#E85D00] text-white font-black text-sm sm:text-base px-8 py-4 rounded-full shadow-lg shadow-orange-500/35 flex items-center justify-center gap-2.5 transition-all hover:scale-[1.03] active:scale-95 group border-2 border-orange-400/40"
+                  className="bg-[#FF6A00] hover:bg-[#E85D00] text-white font-black text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-orange-500/35 flex items-center justify-center gap-2.5 transition-all hover:scale-[1.03] active:scale-95 group border-2 border-orange-400/40"
                 >
                   <span className="text-white font-extrabold tracking-wide">Shop Now</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:translate-x-1 transition-transform" />
@@ -60,14 +60,14 @@ export function HeroBanner() {
                 {/* Secondary Button */}
                 <Link
                   href="/products"
-                  className="bg-white hover:bg-gray-50 text-gray-900 font-bold text-sm sm:text-base px-8 py-4 rounded-full border border-gray-300 shadow-xs transition-all hover:scale-[1.02] active:scale-95 text-center"
+                  className="bg-white hover:bg-gray-50 text-gray-900 font-bold text-sm sm:text-base px-8 py-3.5 rounded-full border border-gray-300 shadow-xs transition-all hover:scale-[1.02] active:scale-95 text-center"
                 >
                   Explore Collection
                 </Link>
               </div>
 
               {/* Value Perks Strip */}
-              <div className="flex items-center gap-5 sm:gap-7 pt-5 border-t border-orange-200/50 text-xs font-bold text-gray-600 flex-wrap">
+              <div className="flex items-center gap-5 sm:gap-7 pt-4 border-t border-orange-200/50 text-xs font-bold text-gray-600 flex-wrap">
                 <div className="flex items-center gap-2">
                   <Truck className="w-4 h-4 text-[#FF6A00] shrink-0" />
                   <span>Free Express Delivery</span>
@@ -83,12 +83,12 @@ export function HeroBanner() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: 3D LUXURY PRODUCTS (100% SEPARATE & FLOATING, ZERO ROUNDED VIGNETTE/BACKGROUND) */}
-            <div className="lg:col-span-7 relative flex items-center justify-center lg:justify-end py-2 sm:py-4">
+            {/* RIGHT COLUMN: 3D LUXURY PRODUCTS (COMPACT HEIGHT & BALANCED PROPORTIONS) */}
+            <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-end py-1 sm:py-2">
               {/* Floating Social Proof Badge (Option 2) - Fills center-left gap with high-trust review score */}
-              <div className="hidden sm:flex items-center gap-3 absolute top-[44%] left-0 xl:-left-6 z-20 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-orange-200/90 shadow-lg shadow-orange-500/10 hover:scale-105 transition-all">
-                <div className="w-9 h-9 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center shrink-0">
-                  <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
+              <div className="hidden sm:flex items-center gap-2.5 absolute top-[42%] -left-2 xl:-left-6 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-orange-200/90 shadow-lg shadow-orange-500/10 hover:scale-105 transition-all">
+                <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center shrink-0">
+                  <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
@@ -100,19 +100,19 @@ export function HeroBanner() {
               </div>
 
               {/* Floating Launch Offer Pill (Option 2) - Adds promotional excitement */}
-              <div className="hidden md:flex items-center gap-2 absolute top-0 right-4 lg:right-10 z-20 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-orange-200/90 shadow-md shadow-orange-500/10 hover:scale-105 transition-all">
+              <div className="hidden md:flex items-center gap-2 absolute top-0 right-2 sm:right-4 z-20 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-orange-200/90 shadow-md shadow-orange-500/10 hover:scale-105 transition-all">
                 <Flame className="w-4 h-4 text-[#FF6A00] fill-[#FF6A00]" />
                 <span className="text-xs font-black text-gray-900">Special Offer: <span className="text-[#FF6A00]">Up to 60% OFF</span></span>
               </div>
 
-              {/* Seamless 3D Floating Products Container - Expanded to fill middle void and balance layout */}
-              <div className="relative w-full max-w-[680px] xl:max-w-[740px] aspect-[4/3] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
+              {/* Seamless 3D Floating Products Container - Sleek & compact height */}
+              <div className="relative w-full max-w-[540px] xl:max-w-[590px] aspect-[4/3] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
                 <Image
                   src="/images/hero-products-isolated.png"
                   alt="3D Floating Luxury Products: Quilted Handbag, Wireless Headphones, Smartwatch, Ambre Luxe Perfume, and Designer Sneaker"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 740px"
+                  sizes="(max-width: 768px) 100vw, 590px"
                   className="object-contain drop-shadow-xl"
                 />
 
