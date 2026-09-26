@@ -22,213 +22,150 @@ export function HeroBanner() {
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-            {/* LEFT COLUMN: HERO HEADLINE, CTAs & SEPARATE PRODUCTS DISPLAY */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* LEFT COLUMN: HERO HEADLINE & CTAs (RESTORED CLEAN & SPACIOUS AS REQUESTED) */}
             <div className="lg:col-span-6 flex flex-col items-start text-left">
               {/* Season Pill Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full border border-orange-200 shadow-xs mb-3.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#FF6A00] animate-pulse" />
-                <span className="text-[11px] font-black tracking-widest text-[#FF6A00] uppercase">
+              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-orange-200 shadow-xs mb-5">
+                <Sparkles className="w-4 h-4 text-[#FF6A00] animate-pulse" />
+                <span className="text-xs font-black tracking-widest text-[#FF6A00] uppercase">
                   NEW COLLECTION 2026
                 </span>
               </div>
 
               {/* Bold Marketplace Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-black text-gray-950 tracking-tight leading-[1.08] mb-3">
+              <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-black text-gray-950 tracking-tight leading-[1.08] mb-4">
                 Discover The Best<br />
                 <span className="text-[#FF6A00]">Products Online.</span>
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed max-w-lg mb-5">
+              <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed max-w-lg mb-7">
                 Shop top-quality products at unbeatable prices across fashion, next-gen electronics, footwear, and beauty with lightning-fast delivery.
               </p>
 
               {/* High-Contrast Action Buttons */}
-              <div className="flex items-center gap-3 sm:gap-4 flex-wrap mb-5 w-full sm:w-auto">
+              <div className="flex items-center gap-3.5 sm:gap-4 flex-wrap mb-8 w-full sm:w-auto">
                 {/* Shop Now Primary Button */}
                 <Link
                   href="/products"
-                  className="bg-[#FF6A00] hover:bg-[#E85D00] text-white font-black text-xs sm:text-sm px-7 py-3 rounded-full shadow-md shadow-orange-500/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.03] active:scale-95 group border-2 border-orange-400/40"
+                  className="bg-[#FF6A00] hover:bg-[#E85D00] text-white font-black text-sm sm:text-base px-8 py-4 rounded-full shadow-lg shadow-orange-500/35 flex items-center justify-center gap-2.5 transition-all hover:scale-[1.03] active:scale-95 group border-2 border-orange-400/40"
                 >
                   <span className="text-white font-extrabold tracking-wide">Shop Now</span>
-                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:translate-x-1 transition-transform" />
                 </Link>
 
                 {/* Secondary Button */}
                 <Link
                   href="/products"
-                  className="bg-white hover:bg-gray-50 text-gray-900 font-bold text-xs sm:text-sm px-7 py-3 rounded-full border border-gray-300 shadow-2xs transition-all hover:scale-[1.02] active:scale-95 text-center"
+                  className="bg-white hover:bg-gray-50 text-gray-900 font-bold text-sm sm:text-base px-8 py-4 rounded-full border border-gray-300 shadow-xs transition-all hover:scale-[1.02] active:scale-95 text-center"
                 >
                   Explore Collection
                 </Link>
               </div>
 
-              {/* PRODUCTS FROM THE CARD DISPLAYED SEPARATELY ON THE LEFT */}
-              <div className="w-full pt-3.5 border-t border-orange-200/50">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-[11px] font-black uppercase tracking-wider text-gray-800 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] animate-ping" />
-                    Featured In This Look
-                  </span>
-                  <Link
-                    href="/category/fashion"
-                    className="text-[11px] font-extrabold text-[#FF6A00] hover:underline flex items-center gap-0.5"
-                  >
-                    <span>View Range</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
-                </div>
-
-                {/* 5 Separate Product Micro-Showcases on the Left */}
-                <div className="grid grid-cols-5 gap-2 w-full">
-                  {[
-                    { title: "Quilted Bag", price: "$120", img: "/images/handbag-3d.png", href: "/category/fashion" },
-                    { title: "Stilettos", price: "$350", img: "/images/heels-3d.png", href: "/category/footwear" },
-                    { title: "Perfume", price: "$95", img: "/images/perfume-3d.png", href: "/category/beauty" },
-                    { title: "Sunglasses", price: "$75", img: "/images/makeup-3d.png", href: "/category/fashion" },
-                    { title: "Loafers", price: "$75", img: "/images/loafers-3d.png", href: "/category/footwear" },
-                  ].map((item, idx) => (
-                    <Link
-                      key={idx}
-                      href={item.href}
-                      className="flex flex-col items-center p-1.5 rounded-xl bg-white/80 hover:bg-white border border-orange-200/70 shadow-2xs hover:shadow-xs transition-all hover:scale-105 text-center group"
-                    >
-                      <div className="relative w-9 h-9 sm:w-11 sm:h-11 mb-1">
-                        <Image
-                          src={item.img}
-                          alt={item.title}
-                          fill
-                          sizes="44px"
-                          className="object-contain group-hover:scale-110 transition-transform"
-                        />
-                      </div>
-                      <span className="text-[10px] font-extrabold text-gray-800 group-hover:text-[#FF6A00] truncate max-w-full">
-                        {item.title}
-                      </span>
-                      <span className="text-[10px] font-black text-[#FF6A00]">
-                        {item.price}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
               {/* Value Perks Strip */}
-              <div className="flex items-center gap-4 sm:gap-6 pt-3 mt-3 border-t border-orange-200/40 text-[11px] font-bold text-gray-600 flex-wrap">
-                <div className="flex items-center gap-1.5">
-                  <Truck className="w-3.5 h-3.5 text-[#FF6A00] shrink-0" />
+              <div className="flex items-center gap-5 sm:gap-7 pt-5 border-t border-orange-200/50 text-xs font-bold text-gray-600 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <Truck className="w-4 h-4 text-[#FF6A00] shrink-0" />
                   <span>Free Express Delivery</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#FF6A00] shrink-0" />
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-[#FF6A00] shrink-0" />
                   <span>100% Genuine Certified</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <RotateCcw className="w-3.5 h-3.5 text-[#FF6A00] shrink-0" />
+                <div className="flex items-center gap-2">
+                  <RotateCcw className="w-4 h-4 text-[#FF6A00] shrink-0" />
                   <span>7-Day Easy Returns</span>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT COLUMN: MULTI-ELEMENT FLOATING 3D COMPOSITION (100% CARDLESS & BORDERLESS) */}
-            <div className="lg:col-span-6 relative flex items-center justify-center min-h-[380px] sm:min-h-[440px]">
-              {/* Natural Ambient Aura blending into canvas */}
+            {/* RIGHT COLUMN: 3D SMARTPHONE & SEPARATE FLOATING PRODUCTS (MATCHING REFERENCE DESIGN) */}
+            <div className="lg:col-span-6 relative flex items-center justify-center py-2 sm:py-4">
+              {/* Soft Ambient Golden Glow */}
               <div className="absolute inset-0 bg-gradient-to-tr from-orange-400/20 via-amber-200/25 to-orange-300/15 rounded-full blur-3xl pointer-events-none" />
 
-              {/* Floating Canvas with Zero Card Enclosure */}
-              <div className="relative w-full max-w-[540px] h-[360px] sm:h-[420px] flex items-center justify-center">
-                {/* 1. Center Floating Smartphone with glowing dress */}
-                <div className="relative z-20 w-[220px] sm:w-[260px] h-[350px] sm:h-[410px] transition-transform duration-500 hover:scale-105">
-                  <Image
-                    src="/images/phone-3d.png"
-                    alt="Floating Smartphone with Glowing Orange Bodycon Dress"
-                    fill
-                    priority
-                    sizes="260px"
-                    className="object-contain drop-shadow-2xl"
-                  />
-                  <Link
-                    href="/category/fashion"
-                    className="absolute inset-0 z-30"
-                    title="Shop Glowing Bodycon Dress ($180)"
-                  />
-                </div>
+              {/* Seamless 3D Floating Showcase Container */}
+              <div className="relative w-full max-w-[480px] sm:max-w-[520px] aspect-[896/1200] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
+                <Image
+                  src="/images/hero-3d-mobile-showcase.png"
+                  alt="3D Smartphone surrounded by floating products: Luxury Handbag, Headphones, Sneaker, Perfume, Smartwatch, Camera and Sunglasses"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 520px"
+                  className="object-contain drop-shadow-2xl"
+                />
 
-                {/* 2. Floating Quilted Handbag (Left of Phone) */}
+                {/* Hotspot: Center Smartphone */}
+                <Link
+                  href="/products"
+                  className="absolute top-[22%] left-[28%] w-[44%] h-[68%] rounded-3xl z-10 cursor-pointer"
+                  title="Shop Online Catalog"
+                />
+
+                {/* Hotspot: Top Left Luxury Handbag */}
                 <Link
                   href="/category/fashion"
-                  className="absolute left-[-2%] sm:left-[2%] bottom-[10%] z-25 w-[140px] sm:w-[170px] h-[120px] sm:h-[150px] transition-all duration-500 hover:scale-110 hover:-translate-y-2 group"
-                  title="Quilted Leather Handbag ($120)"
-                >
-                  <Image
-                    src="/images/handbag-3d.png"
-                    alt="Quilted Orange Leather Handbag"
-                    fill
-                    sizes="170px"
-                    className="object-contain drop-shadow-xl"
-                  />
-                </Link>
+                  className="absolute top-[4%] left-[4%] w-[32%] h-[26%] rounded-2xl z-10 cursor-pointer"
+                  title="Shop Luxury Handbags ($120)"
+                />
 
-                {/* 3. Floating High Heels (Left of Phone) */}
+                {/* Hotspot: Top Wireless Headphones */}
+                <Link
+                  href="/category/electronics"
+                  className="absolute top-[2%] left-[34%] w-[26%] h-[22%] rounded-2xl z-10 cursor-pointer"
+                  title="Shop ANC Wireless Headphones"
+                />
+
+                {/* Hotspot: Top Right Special Offer Pill */}
+                <Link
+                  href="/deals"
+                  className="absolute top-[2%] right-[4%] w-[32%] h-[16%] rounded-2xl z-10 cursor-pointer"
+                  title="Explore 30% OFF Special Offers"
+                />
+
+                {/* Hotspot: Right Floating Sneaker */}
                 <Link
                   href="/category/footwear"
-                  className="absolute left-[8%] top-[12%] z-15 w-[90px] sm:w-[120px] h-[120px] sm:h-[150px] transition-all duration-500 hover:scale-110 hover:-translate-y-2 group"
-                  title="Strappy Stiletto Sandals ($350)"
-                >
-                  <Image
-                    src="/images/heels-3d.png"
-                    alt="Strappy High-Heel Sandals"
-                    fill
-                    sizes="120px"
-                    className="object-contain drop-shadow-xl"
-                  />
-                </Link>
+                  className="absolute top-[18%] right-[2%] w-[32%] h-[24%] rounded-2xl z-10 cursor-pointer"
+                  title="Shop Designer Sneakers"
+                />
 
-                {/* 4. Floating Luxury Perfume (Top Left) */}
+                {/* Hotspot: Middle Left Perfume */}
                 <Link
                   href="/category/beauty"
-                  className="absolute left-[-2%] top-[4%] z-10 w-[80px] sm:w-[100px] h-[80px] sm:h-[100px] transition-all duration-500 hover:scale-110 hover:-translate-y-1"
-                  title="Luna Signature Perfume ($95)"
-                >
-                  <Image
-                    src="/images/perfume-3d.png"
-                    alt="Luna Luxury Perfume"
-                    fill
-                    sizes="100px"
-                    className="object-contain drop-shadow-lg"
-                  />
-                </Link>
+                  className="absolute top-[32%] left-[0%] w-[30%] h-[26%] rounded-2xl z-10 cursor-pointer"
+                  title="Shop Luxury Perfumes & Fragrances"
+                />
 
-                {/* 5. Floating Sunglasses & Makeup Palette (Top Right) */}
+                {/* Hotspot: Middle Right Smartwatch */}
+                <Link
+                  href="/category/electronics"
+                  className="absolute top-[42%] right-[2%] w-[28%] h-[26%] rounded-2xl z-10 cursor-pointer"
+                  title="Shop Smartwatches"
+                />
+
+                {/* Hotspot: Bottom Left Up to 50% OFF Card */}
+                <Link
+                  href="/deals"
+                  className="absolute bottom-[14%] left-[2%] w-[32%] h-[16%] rounded-2xl z-10 cursor-pointer"
+                  title="Shop Up to 50% OFF Clearance Deals"
+                />
+
+                {/* Hotspot: Bottom Right Retro Camera */}
+                <Link
+                  href="/category/electronics"
+                  className="absolute bottom-[10%] right-[4%] w-[30%] h-[24%] rounded-2xl z-10 cursor-pointer"
+                  title="Shop Digital Cameras & Tech"
+                />
+
+                {/* Hotspot: Bottom Sunglasses */}
                 <Link
                   href="/category/fashion"
-                  className="absolute right-[-2%] top-[6%] z-25 w-[140px] sm:w-[170px] h-[110px] sm:h-[140px] transition-all duration-500 hover:scale-110 hover:-translate-y-2"
-                  title="Designer Sunglasses & Makeup Palette ($75)"
-                >
-                  <Image
-                    src="/images/makeup-3d.png"
-                    alt="Designer Sunglasses & Makeup Palette"
-                    fill
-                    sizes="170px"
-                    className="object-contain drop-shadow-xl"
-                  />
-                </Link>
-
-                {/* 6. Floating Elegant Loafers (Bottom Right) */}
-                <Link
-                  href="/category/footwear"
-                  className="absolute right-[2%] bottom-[6%] z-20 w-[130px] sm:w-[160px] h-[100px] sm:h-[120px] transition-all duration-500 hover:scale-110 hover:-translate-y-2"
-                  title="Classic Leather Loafers ($75)"
-                >
-                  <Image
-                    src="/images/loafers-3d.png"
-                    alt="Classic Orange Leather Loafers"
-                    fill
-                    sizes="160px"
-                    className="object-contain drop-shadow-xl"
-                  />
-                </Link>
+                  className="absolute bottom-[1%] left-[12%] w-[32%] h-[14%] rounded-2xl z-10 cursor-pointer"
+                  title="Shop Designer Sunglasses"
+                />
               </div>
             </div>
           </div>
