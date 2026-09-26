@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -17,10 +17,8 @@ import {
 
 export function HeroBanner() {
   const [activeProductIndex, setActiveProductIndex] = useState(0);
-  const [isRotating, setIsRotating] = useState(false);
-  const [rotationAngle, setRotationAngle] = useState(0);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const cardRef = useRef<HTMLDivElement>(null);
+  const [isFastSpinning, setIsFastSpinning] = useState(false);
+  const [isAutoSpin, setIsAutoSpin] = useState(true);
 
   const FEATURED_HERO_PRODUCTS = [
     {
@@ -87,46 +85,62 @@ export function HeroBanner() {
 
   const currentProduct = FEATURED_HERO_PRODUCTS[activeProductIndex];
 
-  // 3D Mouse Tilt Calculation
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current || isRotating) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    // Max tilt: 15deg
-    const tiltX = -(y / (rect.height / 2)) * 12;
-    const tiltY = (x / (rect.width / 2)) * 12;
-    setTilt({ x: tiltX, y: tiltY });
-  };
-
-  const handleMouseLeave = () => {
-    if (!isRotating) {
-      setTilt({ x: 0, y: 0 });
-    }
-  };
-
-  // 360-Degree 3D Rotation Animation Trigger
-  const handleTrigger360Spin = (e: React.MouseEvent) => {
+  // Trigger quick manual 360 burst
+  const handleFastSpinBurst = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsRotating(true);
-    setRotationAngle((prev) => prev + 360);
+    setIsFastSpinning(true);
     setTimeout(() => {
-      setIsRotating(false);
-      setTilt({ x: 0, y: 0 });
+      setIsFastSpinning(false);
     }, 1200);
   };
 
   return (
     <section className="w-full bg-white py-4 sm:py-6">
+      {/* Embedded 360-Degree Continuous 3D Product Spin CSS */}
+      <style jsx global>{`
+        @keyframes autoSpin3DProduct {
+          0% {
+            transform: perspective(1200px) rotateY(0deg) translateY(0px);
+          }
+          50% {
+            transform: perspective(1200px) rotateY(180deg) translateY(-10px);
+          }
+          100% {
+            transform: perspective(1200px) rotateY(360deg) translateY(0px);
+          }
+        }
+        @keyframes fastSpin3DBurst {
+          0% {
+            transform: perspective(1200px) rotateY(0deg) scale(1.05);
+          }
+          100% {
+            transform: perspective(1200px) rotateY(720deg) scale(1);
+          }
+        }
+        .product-360-spin {
+          animation: autoSpin3DProduct 14s linear infinite;
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+        .product-360-fast-spin {
+          animation: fastSpin3DBurst 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+        .product-360-paused {
+          animation-play-state: paused !important;
+        }
+      `}</style>
+
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Canvas with Warm Linen / Peach Tone matching Screenshot 5 */}
+        {/* Main Canvas with Warm Linen / Peach Tone */}
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#FAF0E6] via-[#FDF5ED] to-[#FFF8F2] border border-orange-200/60 p-6 sm:p-10 lg:p-14 shadow-sm">
           {/* Ambient Lighting Accents */}
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-orange-300/25 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-amber-200/30 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* LEFT COLUMN: HERO HEADLINE & HIGH-CONTRAST CTAs */}
             <div className="lg:col-span-6 flex flex-col items-start text-left">
               {/* Season Pill Badge */}
@@ -137,7 +151,7 @@ export function HeroBanner() {
                 </span>
               </div>
 
-              {/* Bold Marketplace Headline matching Screenshot 5 */}
+              {/* Bold Marketplace Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-black text-gray-950 tracking-tight leading-[1.08] mb-4">
                 Discover The Best<br />
                 <span className="text-brand-orange">Products Online.</span>
@@ -168,19 +182,30 @@ export function HeroBanner() {
                 </Link>
               </div>
 
-              {/* 3D Product Switcher Pills */}
+              {/* 3D Product Stage Switcher */}
               <div className="w-full pt-2 mb-6">
-                <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2.5 block flex items-center gap-1.5">
-                  <Zap className="w-3.5 h-3.5 text-brand-orange" />
-                  Interactive 3D Stage Selection:
-                </span>
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
+                    <Zap className="w-3.5 h-3.5 text-brand-orange" />
+                    Select 3D Rotating Product:
+                  </span>
+                  <button
+                    onClick={() => setIsAutoSpin(!isAutoSpin)}
+                    className="text-[11px] font-bold text-brand-orange hover:underline flex items-center gap-1"
+                  >
+                    <RotateCw className="w-3 h-3" />
+                    <span>{isAutoSpin ? "Auto-Spin: ON" : "Auto-Spin: PAUSED"}</span>
+                  </button>
+                </div>
+
                 <div className="flex items-center gap-2 flex-wrap">
                   {FEATURED_HERO_PRODUCTS.map((prod, idx) => (
                     <button
                       key={prod.id}
                       onClick={() => {
                         setActiveProductIndex(idx);
-                        setRotationAngle((prev) => prev + 360);
+                        setIsFastSpinning(true);
+                        setTimeout(() => setIsFastSpinning(false), 900);
                       }}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                         activeProductIndex === idx
@@ -212,114 +237,111 @@ export function HeroBanner() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: 3D INTERACTIVE PODIUM & 360° ROTATING SHOWCASE */}
-            <div className="lg:col-span-6 relative min-h-[440px] sm:min-h-[480px] flex items-center justify-center">
-              {/* 3D Circular Pedestal / Podium Background (Inspired by Screenshot 5) */}
-              <div className="absolute bottom-6 sm:bottom-8 w-72 sm:w-96 h-28 sm:h-36 bg-gradient-to-b from-gray-200 via-white to-gray-300 rounded-[50%] shadow-2xl border-4 border-white/80 pointer-events-none transform -rotate-x-12 flex items-center justify-center">
-                <div className="w-[85%] h-[80%] rounded-[50%] bg-gradient-to-t from-gray-100 to-white shadow-inner border border-gray-200" />
-                <div className="absolute inset-0 rounded-[50%] bg-orange-400/10 blur-xl" />
-              </div>
-
+            {/* RIGHT COLUMN: 3D LUXURY PODIUM & PRODUCT ITSELF ROTATING 360 DEGREES AUTOMATICALLY */}
+            <div className="lg:col-span-6 relative flex flex-col items-center justify-center">
               {/* Floating Top Badge */}
-              <div className={`absolute top-2 right-2 sm:right-6 ${currentProduct.badgeColor} px-4 py-2 rounded-full font-black text-xs sm:text-sm tracking-wider shadow-xl flex items-center gap-1.5 z-30 animate-pulse`}>
+              <div className={`absolute top-0 right-2 sm:right-6 ${currentProduct.badgeColor} px-4 py-2 rounded-full font-black text-xs sm:text-sm tracking-wider shadow-xl flex items-center gap-1.5 z-30 animate-pulse`}>
                 <Flame className="w-4 h-4 fill-amber-300 text-amber-300" />
                 <span>{currentProduct.badge}</span>
               </div>
 
-              {/* Interactive 360° Spin Trigger Button */}
+              {/* Interactive 360° Fast Spin Button */}
               <button
-                onClick={handleTrigger360Spin}
-                className="absolute top-2 left-2 sm:left-6 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-gray-200 shadow-md text-xs font-black text-gray-800 hover:text-brand-orange hover:border-brand-orange flex items-center gap-1.5 z-30 transition-all hover:scale-105 active:scale-95"
-                title="Click to spin card in 3D 360 degrees"
+                onClick={handleFastSpinBurst}
+                className="absolute top-0 left-2 sm:left-6 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-gray-200 shadow-md text-xs font-black text-gray-800 hover:text-brand-orange hover:border-brand-orange flex items-center gap-1.5 z-30 transition-all hover:scale-105 active:scale-95"
+                title="Click to spin product 360 degrees"
               >
-                <RotateCw className={`w-3.5 h-3.5 text-brand-orange ${isRotating ? "animate-spin" : ""}`} />
-                <span>360° 3D Spin</span>
+                <RotateCw className={`w-3.5 h-3.5 text-brand-orange ${isFastSpinning ? "animate-spin" : ""}`} />
+                <span>360° Spin Burst</span>
               </button>
 
-              {/* THE 3D PRODUCT CARD with Real-Time Perspective Tilt & 360° Rotation */}
-              <div
-                ref={cardRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                className="relative z-20 w-72 sm:w-84 bg-white rounded-3xl p-5 shadow-2xl border-4 border-white cursor-pointer transition-transform duration-300 ease-out select-none group"
-                style={{
-                  perspective: "1200px",
-                  transformStyle: "preserve-3d",
-                  transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y + rotationAngle}deg) scale3d(1, 1, 1)`,
-                  transition: isRotating ? "transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)" : "transform 0.15s ease-out",
-                }}
-              >
-                {/* Product Image Canvas */}
-                <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-gradient-to-tr from-gray-50 via-white to-orange-50/40 p-4 mb-4 flex items-center justify-center border border-gray-100">
-                  <Image
-                    src={currentProduct.image}
-                    alt={currentProduct.name}
-                    fill
-                    sizes="(max-width: 640px) 280px, 340px"
-                    className="object-contain p-2 group-hover:scale-108 transition-transform duration-500 ease-out drop-shadow-[0_15px_25px_rgba(0,0,0,0.15)]"
-                    priority
-                  />
-                  {/* Floating Micro Tag */}
-                  <span className="absolute top-2.5 left-2.5 bg-black/80 backdrop-blur-md text-white text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs">
-                    3D PREVIEW
-                  </span>
+              {/* 3D PRODUCT SHOWCASE STAGE */}
+              <div className="relative w-full max-w-md flex flex-col items-center pt-8 pb-4">
+                {/* 3D Floating & 360° Auto-Rotating Product Cutout Container */}
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center z-20">
+                  <div
+                    className={`relative w-full h-full flex items-center justify-center cursor-pointer ${
+                      isFastSpinning
+                        ? "product-360-fast-spin"
+                        : isAutoSpin
+                        ? "product-360-spin"
+                        : "product-360-paused"
+                    }`}
+                  >
+                    <Image
+                      src={currentProduct.image}
+                      alt={currentProduct.name}
+                      fill
+                      sizes="(max-width: 640px) 260px, 340px"
+                      className="object-contain p-3 drop-shadow-[0_25px_35px_rgba(0,0,0,0.22)]"
+                      priority
+                    />
+                  </div>
                 </div>
 
-                {/* Card Information */}
-                <div>
+                {/* 3D Circular Podium / Pedestal (Directly beneath the rotating product) */}
+                <div className="relative -mt-16 w-72 sm:w-88 h-24 bg-gradient-to-b from-gray-200 via-white to-gray-300 rounded-[50%] shadow-2xl border-4 border-white/90 flex items-center justify-center z-10 pointer-events-none">
+                  {/* Inner podium bevel ring */}
+                  <div className="w-[88%] h-[82%] rounded-[50%] bg-gradient-to-t from-gray-100 via-white to-gray-50 shadow-inner border border-gray-200 flex items-center justify-center">
+                    {/* Glowing ambient center light reflection */}
+                    <div className="w-[60%] h-[50%] rounded-[50%] bg-gradient-to-r from-orange-400/20 via-amber-300/30 to-orange-400/20 blur-md" />
+                  </div>
+                  {/* Podium Base Contact Shadow */}
+                  <div className="absolute -bottom-3 w-[92%] h-6 bg-black/15 blur-lg rounded-[50%]" />
+                </div>
+
+                {/* Clean, Fixed Stationary Product Info Card Beneath the Podium */}
+                <div className="w-full mt-5 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-gray-200 shadow-xl z-20">
                   <div className="flex items-center justify-between text-xs text-gray-500 font-bold mb-1">
-                    <span>{currentProduct.category}</span>
+                    <span className="uppercase tracking-wider text-brand-orange">{currentProduct.category}</span>
                     <div className="flex items-center gap-1 text-amber-500 font-black">
                       <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                       <span>{currentProduct.rating}</span>
+                      <span className="text-gray-400 font-normal">({currentProduct.reviews})</span>
                     </div>
                   </div>
 
-                  <h3 className="text-base font-black text-gray-900 group-hover:text-brand-orange transition-colors line-clamp-1 mb-2">
-                    {currentProduct.name}
-                  </h3>
-
-                  {/* Feature Highlights Pills */}
-                  <div className="flex items-center gap-1.5 mb-4 flex-wrap">
-                    {currentProduct.specs.map((spec, i) => (
-                      <span
-                        key={i}
-                        className="text-[10px] font-bold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-md"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Price Row & Action */}
-                  <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                  <div className="flex items-center justify-between gap-4">
                     <div>
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="text-xl font-black text-brand-orange">
-                          {currentProduct.price}
-                        </span>
+                      <h3 className="text-base sm:text-lg font-black text-gray-900 line-clamp-1">
+                        {currentProduct.name}
+                      </h3>
+                      {/* Specs pills */}
+                      <div className="flex items-center gap-1.5 mt-1 flex-wrap">
+                        {currentProduct.specs.map((spec, i) => (
+                          <span
+                            key={i}
+                            className="text-[10px] font-bold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-md"
+                          >
+                            {spec}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="text-right shrink-0">
+                      <div className="flex items-baseline gap-1.5 justify-end">
                         <span className="text-xs text-gray-400 line-through font-semibold">
                           {currentProduct.mrp}
                         </span>
+                        <span className="text-lg sm:text-xl font-black text-brand-orange">
+                          {currentProduct.price}
+                        </span>
                       </div>
-                      <span className="text-[10px] font-bold text-emerald-600">
-                        {currentProduct.discount}
-                      </span>
+                      <Link
+                        href={currentProduct.href}
+                        className="inline-flex items-center gap-1 text-xs font-black text-brand-orange hover:underline mt-0.5"
+                      >
+                        <span>View Product</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
                     </div>
-
-                    <Link
-                      href={currentProduct.href}
-                      className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white rounded-xl text-xs font-black shadow-md shadow-orange-500/30 transition-all flex items-center gap-1.5 active:scale-95"
-                    >
-                      <span>Explore</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
                   </div>
                 </div>
               </div>
 
               {/* Floating Customer Social Proof Badge */}
-              <div className="absolute bottom-2 left-2 sm:left-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 z-30">
+              <div className="absolute -bottom-2 left-2 sm:left-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 z-30">
                 <div className="flex -space-x-2">
                   <div className="w-7 h-7 rounded-full bg-orange-500 text-white font-bold text-[10px] flex items-center justify-center border-2 border-white">
                     A
