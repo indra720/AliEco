@@ -81,90 +81,55 @@ export function HeroBanner() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: 3D SMARTPHONE & SEPARATE FLOATING PRODUCTS (MATCHING REFERENCE DESIGN) */}
+            {/* RIGHT COLUMN: 3D LUXURY PRODUCTS-ONLY SHOWCASE (NO PHONE, NO CARDS, 100% SEPARATE PRODUCTS) */}
             <div className="lg:col-span-6 relative flex items-center justify-center py-2 sm:py-4">
               {/* Soft Ambient Golden Glow */}
               <div className="absolute inset-0 bg-gradient-to-tr from-orange-400/20 via-amber-200/25 to-orange-300/15 rounded-full blur-3xl pointer-events-none" />
 
-              {/* Seamless 3D Floating Showcase Container */}
-              <div className="relative w-full max-w-[480px] sm:max-w-[520px] aspect-[896/1200] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
+              {/* Seamless 3D Floating Products Container */}
+              <div className="relative w-full max-w-[560px] aspect-[1200/896] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
                 <Image
-                  src="/images/hero-3d-mobile-showcase.png"
-                  alt="3D Smartphone surrounded by floating products: Luxury Handbag, Headphones, Sneaker, Perfume, Smartwatch, Camera and Sunglasses"
+                  src="/images/hero-products-only.png"
+                  alt="3D Floating Luxury Products: Quilted Handbag, Wireless Headphones, Smartwatch, Aurora Perfume, and Designer Sneaker"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 520px"
+                  sizes="(max-width: 768px) 100vw, 560px"
                   className="object-contain drop-shadow-2xl"
                 />
 
-                {/* Hotspot: Center Smartphone */}
-                <Link
-                  href="/products"
-                  className="absolute top-[22%] left-[28%] w-[44%] h-[68%] rounded-3xl z-10 cursor-pointer"
-                  title="Shop Online Catalog"
-                />
-
-                {/* Hotspot: Top Left Luxury Handbag */}
+                {/* Hotspot 1: Luxury Orange Handbag (Top Left) */}
                 <Link
                   href="/category/fashion"
-                  className="absolute top-[4%] left-[4%] w-[32%] h-[26%] rounded-2xl z-10 cursor-pointer"
-                  title="Shop Luxury Handbags ($120)"
+                  className="absolute top-[8%] left-[4%] w-[38%] h-[42%] rounded-3xl z-10 cursor-pointer"
+                  title="Shop Luxury Quilted Handbags"
                 />
 
-                {/* Hotspot: Top Wireless Headphones */}
+                {/* Hotspot 2: Wireless Over-Ear Headphones (Top Center) */}
                 <Link
                   href="/category/electronics"
-                  className="absolute top-[2%] left-[34%] w-[26%] h-[22%] rounded-2xl z-10 cursor-pointer"
-                  title="Shop ANC Wireless Headphones"
+                  className="absolute top-[4%] left-[40%] w-[32%] h-[46%] rounded-3xl z-10 cursor-pointer"
+                  title="Shop Premium Wireless Headphones"
                 />
 
-                {/* Hotspot: Top Right Special Offer Pill */}
+                {/* Hotspot 3: Modern Smartwatch (Top Right) */}
                 <Link
-                  href="/deals"
-                  className="absolute top-[2%] right-[4%] w-[32%] h-[16%] rounded-2xl z-10 cursor-pointer"
-                  title="Explore 30% OFF Special Offers"
+                  href="/category/electronics"
+                  className="absolute top-[18%] right-[4%] w-[30%] h-[40%] rounded-3xl z-10 cursor-pointer"
+                  title="Shop Smartwatches & Wearables"
                 />
 
-                {/* Hotspot: Right Floating Sneaker */}
-                <Link
-                  href="/category/footwear"
-                  className="absolute top-[18%] right-[2%] w-[32%] h-[24%] rounded-2xl z-10 cursor-pointer"
-                  title="Shop Designer Sneakers"
-                />
-
-                {/* Hotspot: Middle Left Perfume */}
+                {/* Hotspot 4: Aurora Luxury Perfume (Bottom Left) */}
                 <Link
                   href="/category/beauty"
-                  className="absolute top-[32%] left-[0%] w-[30%] h-[26%] rounded-2xl z-10 cursor-pointer"
-                  title="Shop Luxury Perfumes & Fragrances"
+                  className="absolute bottom-[8%] left-[18%] w-[28%] h-[46%] rounded-3xl z-10 cursor-pointer"
+                  title="Shop Luxury Fragrances & Perfume"
                 />
 
-                {/* Hotspot: Middle Right Smartwatch */}
+                {/* Hotspot 5: Designer Sneaker (Bottom Right) */}
                 <Link
-                  href="/category/electronics"
-                  className="absolute top-[42%] right-[2%] w-[28%] h-[26%] rounded-2xl z-10 cursor-pointer"
-                  title="Shop Smartwatches"
-                />
-
-                {/* Hotspot: Bottom Left Up to 50% OFF Card */}
-                <Link
-                  href="/deals"
-                  className="absolute bottom-[14%] left-[2%] w-[32%] h-[16%] rounded-2xl z-10 cursor-pointer"
-                  title="Shop Up to 50% OFF Clearance Deals"
-                />
-
-                {/* Hotspot: Bottom Right Retro Camera */}
-                <Link
-                  href="/category/electronics"
-                  className="absolute bottom-[10%] right-[4%] w-[30%] h-[24%] rounded-2xl z-10 cursor-pointer"
-                  title="Shop Digital Cameras & Tech"
-                />
-
-                {/* Hotspot: Bottom Sunglasses */}
-                <Link
-                  href="/category/fashion"
-                  className="absolute bottom-[1%] left-[12%] w-[32%] h-[14%] rounded-2xl z-10 cursor-pointer"
-                  title="Shop Designer Sunglasses"
+                  href="/category/footwear"
+                  className="absolute bottom-[6%] right-[8%] w-[42%] h-[44%] rounded-3xl z-10 cursor-pointer"
+                  title="Shop Designer Sneakers & Footwear"
                 />
               </div>
             </div>
