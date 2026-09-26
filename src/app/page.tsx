@@ -13,36 +13,41 @@ import { TrustFeatureStrip } from "@/components/home/TrustFeatureStrip";
 import { PRODUCTS } from "@/data/products";
 
 export default function HomePage() {
-  const trendingProducts = PRODUCTS.filter((p) => p.isTrending || p.rating >= 4.8);
-  const bestSellers = PRODUCTS.filter((p) => p.isBestSeller || p.reviewCount >= 250);
+  const trendingProducts = PRODUCTS.filter((p) => p.isTrending || p.rating >= 4.7);
+  const bestSellers = PRODUCTS.filter((p) => p.isBestSeller || p.reviewCount >= 200);
   const newArrivals = PRODUCTS.filter((p) => p.isNewArrival || p.createdAt.startsWith("2024-03") || p.createdAt.startsWith("2024-02"));
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <main className="flex-1">
-        {/* 1. Hero Promotional Showcase */}
+        {/* 1. Hero Promotional Showcase (Matching Screenshot 1) */}
         <HeroBanner />
 
-        {/* 2. Shop by Category Strip */}
+        {/* 2. Shop by Category Circular Strip (Matching Screenshot 2) */}
         <CategoryStrip />
 
-        {/* 3. Flash Deals with Live Countdown */}
-        <FlashDealsSection />
-
-        {/* 4. Trending Products with Category Filter Tabs */}
+        {/* 3. Popular Products with Category Tabs (Matching Screenshot 3) */}
         <ProductCarouselSection
-          title="Trending Products"
-          subtitle="Top picks that shoppers across the nation are buying right now"
-          products={trendingProducts}
-          viewAllLink="/products?sort=popular"
+          title="Popular Products"
+          subtitle="Discover customer favorites and top-rated items with instant dispatch"
+          products={PRODUCTS}
+          viewAllLink="/products"
           tabs={[
-            { label: "All Trending", filterFn: () => true },
-            { label: "Electronics", filterFn: (p) => p.categorySlug === "electronics" },
-            { label: "Fashion", filterFn: (p) => p.categorySlug === "fashion" },
-            { label: "Home", filterFn: (p) => p.categorySlug === "home-living" },
+            { label: "ALL", filterFn: () => true },
+            { label: "FASHION", filterFn: (p) => p.categorySlug === "fashion" },
+            { label: "BAGS", filterFn: (p) => p.categorySlug === "accessories" || (p.subcategory?.toLowerCase().includes("bag") ?? false) || p.tags.includes("bags") },
+            { label: "FOOTWEAR", filterFn: (p) => (p.subcategory?.toLowerCase().includes("footwear") ?? false) || p.tags.includes("shoes") || p.tags.includes("footwear") || p.title.toLowerCase().includes("sneaker") },
+            { label: "GROCERIES", filterFn: (p) => p.categorySlug === "grocery" },
+            { label: "WELLNESS", filterFn: (p) => p.categorySlug === "sports-fitness" || p.categorySlug === "beauty" },
+            { label: "JEWELLERY", filterFn: (p) => p.categorySlug === "jewellery" },
+            { label: "BEAUTY", filterFn: (p) => p.categorySlug === "beauty" },
+            { label: "ELECTRONICS", filterFn: (p) => p.categorySlug === "electronics" },
           ]}
         />
+
+        {/* 4. Flash Deals with Live Countdown */}
+        <FlashDealsSection />
 
         {/* 5. Commercial Promotional Banners */}
         <PromotionalGrid />

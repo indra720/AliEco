@@ -37,6 +37,8 @@ export function Header() {
 
   const accountDropdownRef = useRef<HTMLDivElement>(null);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const { itemCount } = useCart();
   const { wishlistCount } = useWishlist();
   const { compareCount } = useCompare();
@@ -54,7 +56,7 @@ export function Header() {
 
   return (
     <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-40 shadow-xs">
-      {/* 1. TOP PROMOTIONAL BANNER (Like Alibaba Super September Ribbon) */}
+      {/* 1. TOP PROMOTIONAL BANNER */}
       <div className="bg-gradient-to-r from-red-600 via-orange-600 to-amber-500 text-white text-xs sm:text-sm py-2 px-4 font-semibold">
         <div className="max-w-[1580px] mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -104,8 +106,35 @@ export function Header() {
           </Link>
         </div>
 
+        {/* Center: Sleek Search Bar */}
+        <div className="hidden lg:flex flex-1 max-w-xl mx-4">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!searchQuery.trim()) return;
+              router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+            }}
+            className="relative flex items-center w-full"
+          >
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products, brands, categories..."
+              className="w-full bg-gray-50 hover:bg-gray-100 focus:bg-white text-gray-900 text-xs sm:text-sm pl-4 pr-12 py-2.5 rounded-full border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-100 outline-none transition-all placeholder:text-gray-400 font-medium"
+            />
+            <button
+              type="submit"
+              className="absolute right-1 top-1 bottom-1 px-3.5 bg-brand-orange hover:bg-brand-orange-dark text-white rounded-full flex items-center justify-center transition-colors shadow-xs"
+              aria-label="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          </form>
+        </div>
+
         {/* Center-Right: Delivery Pincode, Language/Currency & Portal Switcher */}
-        <div className="hidden md:flex items-center gap-6 text-xs text-gray-700 font-medium">
+        <div className="hidden xl:flex items-center gap-5 text-xs text-gray-700 font-medium">
           {/* Deliver to India */}
           <div className="flex items-center gap-2 cursor-pointer hover:text-brand-orange transition-colors">
             <span className="text-base">🇮🇳</span>
@@ -113,12 +142,6 @@ export function Header() {
               <span className="text-[10px] text-gray-400 uppercase font-semibold">Deliver to:</span>
               <span className="font-bold text-gray-900">India, 400011</span>
             </div>
-          </div>
-
-          {/* Language & Currency */}
-          <div className="flex items-center gap-1.5 cursor-pointer hover:text-brand-orange transition-colors">
-            <Globe className="w-4 h-4 text-gray-500" />
-            <span className="font-bold text-gray-900">English-INR (₹)</span>
           </div>
 
           {/* Quick Portal Switcher (Customer / Seller / Admin) */}

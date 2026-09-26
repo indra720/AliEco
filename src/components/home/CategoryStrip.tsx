@@ -3,25 +3,93 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { CATEGORIES } from "@/data/categories";
+import { ArrowRight } from "lucide-react";
 
 export function CategoryStrip() {
+  const CIRCULAR_CATEGORIES = [
+    {
+      id: "cat-fashion",
+      name: "Fashion",
+      slug: "fashion",
+      image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&auto=format&fit=crop&q=80",
+      href: "/category/fashion",
+    },
+    {
+      id: "cat-electronics",
+      name: "Electronics",
+      slug: "electronics",
+      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&auto=format&fit=crop&q=80",
+      href: "/category/electronics",
+    },
+    {
+      id: "cat-footwear",
+      name: "Footwear",
+      slug: "fashion",
+      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&auto=format&fit=crop&q=80",
+      href: "/category/fashion",
+    },
+    {
+      id: "cat-beauty",
+      name: "Beauty",
+      slug: "beauty",
+      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&auto=format&fit=crop&q=80",
+      href: "/category/beauty",
+    },
+    {
+      id: "cat-jewellery",
+      name: "Jewellery",
+      slug: "jewellery",
+      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&auto=format&fit=crop&q=80",
+      href: "/category/jewellery",
+    },
+    {
+      id: "cat-home",
+      name: "Home & Living",
+      slug: "home-living",
+      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&auto=format&fit=crop&q=80",
+      href: "/category/home-living",
+    },
+    {
+      id: "cat-sports",
+      name: "Sports",
+      slug: "sports-fitness",
+      image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400&auto=format&fit=crop&q=80",
+      href: "/category/sports-fitness",
+    },
+    {
+      id: "cat-watches",
+      name: "Watches",
+      slug: "jewellery",
+      image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400&auto=format&fit=crop&q=80",
+      href: "/category/jewellery",
+    },
+    {
+      id: "cat-bags",
+      name: "Bags",
+      slug: "accessories",
+      image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&auto=format&fit=crop&q=80",
+      href: "/category/accessories",
+    },
+    {
+      id: "cat-grocery",
+      name: "Grocery",
+      slug: "grocery",
+      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&auto=format&fit=crop&q=80",
+      href: "/category/grocery",
+    },
+  ];
+
   return (
-    <section className="py-10 bg-white border-b border-gray-100">
+    <section className="py-8 sm:py-10 bg-white border-b border-gray-100">
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4">
+        {/* Header matching Screenshot 2 */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-black text-brand-orange uppercase tracking-wider mb-1">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Explore Marketplace Catalog</span>
-            </div>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
-              Curated Category Collections
+              Shop by Category
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
-              Shop directly from certified manufacturers and brand owners across India
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
+              Explore our curated selection of high-quality marketplace categories
             </p>
           </div>
 
@@ -34,43 +102,31 @@ export function CategoryStrip() {
           </Link>
         </div>
 
-        {/* Refined, Elegant Category Cards Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
-          {CATEGORIES.map((cat) => (
+        {/* Circular Category Avatars Row matching Screenshot 2 */}
+        <div className="flex sm:grid sm:grid-cols-5 lg:grid-cols-10 gap-5 sm:gap-6 overflow-x-auto no-scrollbar pb-3 pt-1 justify-start lg:justify-between items-start">
+          {CIRCULAR_CATEGORIES.map((cat) => (
             <Link
               key={cat.id}
-              href={`/category/${cat.slug}`}
-              className="group relative flex flex-col bg-white rounded-2xl border border-gray-150 hover:border-brand-orange hover:shadow-lg hover:shadow-orange-500/10 hover:-translate-y-1 transition-all duration-300 overflow-hidden p-3"
+              href={cat.href}
+              className="group flex flex-col items-center flex-shrink-0 text-center focus:outline-none"
             >
-              {/* Category Image Canvas */}
-              <div className="relative w-full aspect-[16/11] rounded-xl overflow-hidden bg-gradient-to-tr from-orange-50/40 via-gray-50 to-amber-50/30 mb-2.5">
-                <Image
-                  src={cat.image}
-                  alt={cat.name}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                  className="object-cover group-hover:scale-108 transition-transform duration-500 ease-out"
-                />
-
-                {/* Item count tag badge */}
-                <span className="absolute top-2 right-2 bg-white/95 backdrop-blur-md text-gray-800 text-[10px] font-black px-2 py-0.5 rounded-full shadow-xs border border-white">
-                  {cat.productCount}+ Items
-                </span>
-              </div>
-
-              {/* Title & Arrow */}
-              <div className="flex items-center justify-between px-1">
-                <div>
-                  <h3 className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-brand-orange transition-colors line-clamp-1">
-                    {cat.name}
-                  </h3>
-                  <span className="text-[11px] text-gray-400 font-medium">Explore Collection</span>
-                </div>
-
-                <div className="w-7 h-7 rounded-full bg-gray-50 group-hover:bg-brand-orange group-hover:text-white text-gray-400 flex items-center justify-center transition-colors shrink-0">
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              {/* Perfect Circular Avatar with Border & Subtle Ring */}
+              <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full p-1 bg-white border-2 border-gray-150 group-hover:border-brand-orange group-hover:shadow-lg group-hover:shadow-orange-500/20 group-hover:scale-105 transition-all duration-300 flex items-center justify-center mx-auto">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-gray-50">
+                  <Image
+                    src={cat.image}
+                    alt={cat.name}
+                    fill
+                    sizes="(max-width: 640px) 80px, 112px"
+                    className="object-cover group-hover:scale-115 transition-transform duration-500 ease-out"
+                  />
                 </div>
               </div>
+
+              {/* Clean Typography Label */}
+              <span className="text-xs sm:text-sm font-bold text-gray-800 group-hover:text-brand-orange transition-colors mt-2.5 block truncate max-w-[85px] sm:max-w-[105px]">
+                {cat.name}
+              </span>
             </Link>
           ))}
         </div>
