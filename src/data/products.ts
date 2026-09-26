@@ -1,6 +1,59 @@
 import { Product } from "@/types";
 
 export const PRODUCTS: Product[] = [
+  // --- RNN SAREE (Direct from Screenshot 3 & 4) ---
+  {
+    id: "prod-saree-1",
+    slug: "rnn-saree-new-pakhi-lata-cotton-silk",
+    title: "Rnn Saree New Pakhi lata Cotton Silk Dhakai Jamdani Saree",
+    brand: "RNN Saree",
+    brandSlug: "rnn-saree",
+    category: "Fashion",
+    categorySlug: "fashion",
+    subcategory: "Ethnic Wear",
+    price: 1250,
+    mrp: 1999,
+    discountPercent: 10,
+    rating: 5.0,
+    reviewCount: 0,
+    inStock: true,
+    stockCount: 65432,
+    isFeatured: true,
+    isBestSeller: true,
+    isTrending: true,
+    images: [
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&auto=format&fit=crop&q=80",
+    ],
+    thumbnail: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&auto=format&fit=crop&q=80",
+    shortDescription: "Traditional hand-woven cotton silk Dhakai Jamdani saree with intricate floral zari embroidery and rich pallu work.",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Woven with pure cotton-silk blend threads, featuring artisanal Jamdani motifs, a contrast zari border, and an unstitched matching blouse piece.",
+    highlights: [
+      "Authentic Bengal Cotton Silk Dhakai Jamdani Weave",
+      "Rich Floral Zari Zari Embroidered Border & Pallu",
+      "Includes 0.8m Unstitched Matching Blouse Piece",
+      "Lightweight, Breathable All-Season Festive Wear",
+    ],
+    specifications: [
+      { name: "Saree Fabric", value: "Cotton Silk Blend" },
+      { name: "Blouse Piece", value: "Included (Unstitched 80cm)" },
+      { name: "Length", value: "5.5 meters saree + 0.8 meter blouse" },
+      { name: "Care Instructions", value: "Dry Clean Only" },
+    ],
+    sellerId: "seller-2",
+    sellerName: "RNN Traditional Weaves",
+    sellerRating: 5.0,
+    sku: "RNN-SAR-001",
+    createdAt: "2024-03-20",
+    tags: ["saree", "ethnic", "fashion", "traditional", "jamdani"],
+    variants: [
+      { id: "var-saree-pink", name: "Rani Pink", sku: "RNN-SAR-PNK", price: 1250, stock: 25000, color: "Rani Pink", size: "Free Size", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&auto=format&fit=crop&q=80" },
+      { id: "var-saree-red", name: "Crimson Red", sku: "RNN-SAR-RED", price: 1250, stock: 18000, color: "Crimson Red", size: "Free Size", image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=800&auto=format&fit=crop&q=80" },
+      { id: "var-saree-green", name: "Emerald Green", sku: "RNN-SAR-GRN", price: 1250, stock: 12432, color: "Emerald Green", size: "Free Size", image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&auto=format&fit=crop&q=80" },
+      { id: "var-saree-navy", name: "Royal Navy", sku: "RNN-SAR-NVY", price: 1250, stock: 10000, color: "Royal Navy", size: "Free Size" },
+    ],
+  },
   // --- ELECTRONICS (1 to 10) ---
   {
     id: "prod-1",
