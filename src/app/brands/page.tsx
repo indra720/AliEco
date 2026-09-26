@@ -12,8 +12,8 @@ export default function BrandsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 bg-surface-secondary/40 py-8">
-        <div className="max-w-7xl mx-auto px-4">
+      <main className="flex-1 bg-surface-secondary/40 py-6 sm:py-8">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-1.5 text-xs text-ink-secondary mb-6">
             <Link href="/" className="hover:text-oranza transition-colors">
               Home
@@ -31,7 +31,7 @@ export default function BrandsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {BRANDS.map((brand) => (
               <div
                 key={brand.id}

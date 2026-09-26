@@ -15,8 +15,8 @@ export default function DealsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 bg-surface-secondary/40 py-8">
-        <div className="max-w-7xl mx-auto px-4">
+      <main className="flex-1 bg-surface-secondary/40 py-6 sm:py-8">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-1.5 text-xs text-ink-secondary mb-6">
             <Link href="/" className="hover:text-oranza transition-colors">
               Home
@@ -25,7 +25,7 @@ export default function DealsPage() {
             <span className="font-semibold text-ink">Super Deals & Offers</span>
           </nav>
 
-          <div className="bg-gradient-to-r from-red-600 via-oranza to-amber-500 rounded-2xl p-6 sm:p-10 text-white mb-8 shadow-md">
+          <div className="bg-gradient-to-r from-red-600 via-oranza to-amber-500 rounded-3xl p-6 sm:p-10 text-white mb-8 shadow-md">
             <div className="max-w-xl">
               <span className="bg-white/20 backdrop-blur-sm text-white text-[11px] font-black uppercase px-2.5 py-1 rounded inline-block mb-3">
                 🔥 Mega Savings Festival
@@ -45,7 +45,7 @@ export default function DealsPage() {
             <h2 className="text-xl font-black text-ink mb-6">
               All Discounted Deals (40%+ Off)
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
               {dealProducts.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

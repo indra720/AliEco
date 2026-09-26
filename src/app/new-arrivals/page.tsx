@@ -16,8 +16,8 @@ export default function NewArrivalsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 bg-surface-secondary/40 py-8">
-        <div className="max-w-7xl mx-auto px-4">
+      <main className="flex-1 bg-surface-secondary/40 py-6 sm:py-8">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-1.5 text-xs text-ink-secondary mb-6">
             <Link href="/" className="hover:text-oranza transition-colors">
               Home
@@ -26,7 +26,7 @@ export default function NewArrivalsPage() {
             <span className="font-semibold text-ink">New Arrivals</span>
           </nav>
 
-          <div className="bg-white p-6 sm:p-8 rounded-2xl border border-border mb-8 shadow-sm">
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-border mb-8 shadow-sm">
             <span className="text-oranza font-black text-xs uppercase tracking-wider block mb-1">
               Fresh Off The Line
             </span>
@@ -38,7 +38,7 @@ export default function NewArrivalsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
             {newArrivals.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
