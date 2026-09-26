@@ -22,6 +22,13 @@ const config: Config = {
           800: "#993B00",
           900: "#702A00",
         },
+        "brand-orange": {
+          DEFAULT: "#FF6A00",
+          dark: "#E85D00",
+          light: "#FFF3E8",
+        },
+        "brand-orange-dark": "#E85D00",
+        "brand-orange-light": "#FFF3E8",
         surface: {
           DEFAULT: "#FFFFFF",
           secondary: "#F7F7F7",

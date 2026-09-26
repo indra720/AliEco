@@ -329,6 +329,33 @@ export function Header() {
         </div>
       </div>
 
+      {/* Mobile Search Bar (Only visible on mobile screens) */}
+      <div className="lg:hidden px-4 pb-3 pt-1 border-t border-gray-100 bg-white">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (!searchQuery.trim()) return;
+            router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+          }}
+          className="relative flex items-center w-full"
+        >
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search products, brands, categories..."
+            className="w-full bg-gray-100 text-gray-900 text-xs pl-4 pr-10 py-2.5 rounded-full border border-gray-200 outline-none font-medium focus:border-brand-orange focus:bg-white"
+          />
+          <button
+            type="submit"
+            className="absolute right-1 top-1 bottom-1 px-3 bg-[#FF6A00] text-white rounded-full flex items-center justify-center shadow-xs"
+            aria-label="Search"
+          >
+            <Search className="w-3.5 h-3.5" />
+          </button>
+        </form>
+      </div>
+
       {/* 3. SECONDARY CATEGORY / SUB-NAV STRIP */}
       <div className="bg-gray-50 border-t border-gray-200 text-xs sm:text-sm hidden lg:block">
         <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -421,7 +448,11 @@ export function Header() {
               <div className="mt-2.5 flex gap-1">
                 <button
                   onClick={() => switchRole("customer")}
-                  className={`px-3 py-1 rounded-lg text-[11px] font-bold ${role === "customer" ? "bg-brand-orange text-white" : "bg-white border"}`}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    role === "customer"
+                      ? "bg-[#FF6A00] text-white shadow-xs"
+                      : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
+                  }`}
                 >
                   Customer
                 </button>
@@ -431,7 +462,11 @@ export function Header() {
                     router.push("/seller");
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`px-3 py-1 rounded-lg text-[11px] font-bold ${role === "seller" ? "bg-brand-orange text-white" : "bg-white border"}`}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    role === "seller"
+                      ? "bg-[#FF6A00] text-white shadow-xs"
+                      : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
+                  }`}
                 >
                   Seller
                 </button>
@@ -441,7 +476,11 @@ export function Header() {
                     router.push("/admin");
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`px-3 py-1 rounded-lg text-[11px] font-bold ${role === "admin" ? "bg-brand-orange text-white" : "bg-white border"}`}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    role === "admin"
+                      ? "bg-[#FF6A00] text-white shadow-xs"
+                      : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
+                  }`}
                 >
                   Admin
                 </button>

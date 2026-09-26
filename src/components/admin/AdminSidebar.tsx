@@ -18,9 +18,15 @@ import {
   Settings,
   ArrowLeft,
   ShieldCheck,
+  X,
 } from "lucide-react";
 
-export function AdminSidebar() {
+interface AdminSidebarProps {
+  isMobile?: boolean;
+  onClose?: () => void;
+}
+
+export function AdminSidebar({ isMobile, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
 
   const links = [
@@ -39,10 +45,16 @@ export function AdminSidebar() {
   ];
 
   return (
-    <aside className="w-64 bg-[#111111] text-neutral-300 min-h-screen flex flex-col flex-shrink-0 border-r border-neutral-800">
+    <aside
+      className={`${
+        isMobile
+          ? "w-72 bg-[#111111] text-neutral-300 h-full flex flex-col shadow-2xl z-50 overflow-hidden"
+          : "w-64 bg-[#111111] text-neutral-300 h-screen sticky top-0 hidden md:flex flex-col flex-shrink-0 border-r border-neutral-800 select-none overflow-hidden"
+      }`}
+    >
       {/* Brand Header */}
       <div className="p-5 border-b border-neutral-800 flex items-center justify-between">
-        <Link href="/admin" className="flex items-center gap-2">
+        <Link href="/admin" onClick={onClose} className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-oranza text-white font-black text-lg flex items-center justify-center">
             O
           </div>
@@ -55,10 +67,20 @@ export function AdminSidebar() {
             </span>
           </div>
         </Link>
+
+        {isMobile && (
+          <button
+            onClick={onClose}
+            className="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition"
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
       </div>
 
-      {/* Nav list */}
-      <nav className="p-3 space-y-1 text-xs font-semibold flex-1 overflow-y-auto">
+      {/* Nav list - no ugly scrollbar when links fit */}
+      <nav className="p-3 space-y-1 text-xs font-semibold flex-1 overflow-y-auto no-scrollbar">
         {links.map((link) => {
           const Icon = link.icon;
           const isActive = pathname === link.href;
@@ -67,13 +89,14 @@ export function AdminSidebar() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={onClose}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
                 isActive
                   ? "bg-oranza text-white font-bold shadow-md"
                   : "text-neutral-400 hover:bg-neutral-800/60 hover:text-white"
               }`}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="w-4 h-4 shrink-0" />
               <span>{link.label}</span>
             </Link>
           );
@@ -92,3 +115,5 @@ export function AdminSidebar() {
     </aside>
   );
 }
+
+export default AdminSidebar;

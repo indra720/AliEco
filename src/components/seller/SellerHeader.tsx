@@ -1,22 +1,34 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { Bell, Search, Sparkles } from "lucide-react";
+import { Bell, Search, Menu, Store } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
-export function SellerHeader() {
+interface SellerHeaderProps {
+  onMenuClick?: () => void;
+}
+
+export function SellerHeader({ onMenuClick }: SellerHeaderProps) {
   const { user } = useAuth();
 
   return (
-    <header className="h-16 bg-white border-b border-border px-6 flex items-center justify-between sticky top-0 z-30">
+    <header className="h-16 bg-white border-b border-border px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
       <div className="flex items-center gap-3">
+        {onMenuClick && (
+          <button
+            onClick={onMenuClick}
+            className="p-2 md:hidden text-gray-700 hover:text-oranza hover:bg-gray-100 rounded-xl transition"
+            aria-label="Toggle navigation drawer"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        )}
         <h2 className="text-sm font-black text-ink uppercase tracking-wider hidden sm:block">
           Merchant Operations
         </h2>
-        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-          Store Live & Accepting Orders
+          Store Live
         </span>
       </div>
 
@@ -49,3 +61,5 @@ export function SellerHeader() {
     </header>
   );
 }
+
+export default SellerHeader;

@@ -67,8 +67,8 @@ export function ProductCarouselSection({
                 onClick={() => setActiveTab(idx)}
                 className={`pb-3 text-xs sm:text-sm uppercase tracking-wider font-extrabold whitespace-nowrap transition-all duration-200 relative ${
                   activeTab === idx
-                    ? "text-brand-orange border-b-2 border-brand-orange"
-                    : "text-gray-500 hover:text-gray-800 border-b-2 border-transparent"
+                    ? "text-[#FF6A00] border-b-2 border-[#FF6A00] font-black"
+                    : "text-gray-500 hover:text-gray-900 border-b-2 border-transparent"
                 }`}
               >
                 {tab.label}

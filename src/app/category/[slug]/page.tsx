@@ -159,8 +159,8 @@ export default function CategoryDetailPage() {
                     }}
                     className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black whitespace-nowrap transition-all flex items-center gap-2 ${
                       activeGroupIndex === idx
-                        ? "bg-brand-orange text-white shadow-md shadow-orange-500/25 scale-102"
-                        : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
+                        ? "bg-[#FF6A00] text-white shadow-md shadow-orange-500/25 scale-102"
+                        : "bg-white text-gray-800 hover:bg-orange-50 hover:text-[#FF6A00] border border-gray-300 font-bold"
                     }`}
                   >
                     <span>{grp.name}</span>
@@ -175,17 +175,17 @@ export default function CategoryDetailPage() {
             <div className="mb-8">
               <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
                 <span className="text-xs font-bold text-gray-500 uppercase tracking-wider flex-shrink-0 flex items-center gap-1">
-                  <Filter className="w-3.5 h-3.5 text-brand-orange" />
+                  <Filter className="w-3.5 h-3.5 text-[#FF6A00]" />
                   Category Types:
                 </span>
                 {currentGroup.subcategories.map((sub, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveSubSubCategory(sub)}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all border ${
+                    className={`px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all border ${
                       activeSubSubCategory === sub
                         ? "bg-gray-900 text-white border-gray-900 shadow-sm"
-                        : "bg-white text-gray-700 border-gray-200 hover:border-brand-orange hover:text-brand-orange shadow-xs"
+                        : "bg-white text-gray-800 border-gray-300 hover:border-[#FF6A00] hover:text-[#FF6A00] shadow-xs"
                     }`}
                   >
                     {sub}

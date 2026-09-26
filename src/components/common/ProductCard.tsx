@@ -296,11 +296,11 @@ export function ProductCard({ product, layout = "grid" }: ProductCardProps) {
           </div>
 
           {/* Price Line (Strikethrough MRP on Left, Bold Red/Coral Sale Price on Right) */}
-          <div className="flex items-baseline justify-between mt-auto mb-2">
-            <span className="text-sm font-semibold text-gray-600 line-through">
+          <div className="flex items-baseline justify-between mt-auto mb-2 flex-wrap gap-1">
+            <span className="text-xs sm:text-sm font-semibold text-gray-500 line-through">
               {formatPrice(product.mrp)}
             </span>
-            <span className="text-base sm:text-lg font-bold text-[#ff4d4f]">
+            <span className="text-sm sm:text-base font-black text-[#ff4d4f]">
               {formatPrice(product.price)}
             </span>
           </div>
@@ -309,19 +309,19 @@ export function ProductCard({ product, layout = "grid" }: ProductCardProps) {
           <button
             onClick={handleAddToCart}
             disabled={!product.inStock}
-            className={`w-full mt-2 py-2.5 px-4 rounded-xl border font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 active:scale-95 shadow-xs ${
+            className={`w-full mt-1.5 py-2 sm:py-2.5 px-2 sm:px-4 rounded-xl border-2 font-black text-[11px] sm:text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95 shadow-xs ${
               isAdding
                 ? "bg-emerald-600 border-emerald-600 text-white"
-                : "border-[#ff4d4f] text-[#ff4d4f] hover:bg-[#ff4d4f] hover:text-white"
+                : "border-[#ff4d4f] text-[#ff4d4f] hover:bg-[#ff4d4f] hover:text-white bg-white"
             }`}
           >
             {isAdding ? (
               <>
-                <Check className="w-4 h-4" /> Added!
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Added!
               </>
             ) : (
               <>
-                <ShoppingCart className="w-4 h-4" /> Add to Cart
+                <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Add to Cart
               </>
             )}
           </button>
