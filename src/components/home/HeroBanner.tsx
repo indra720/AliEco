@@ -81,54 +81,51 @@ export function HeroBanner() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: 3D LUXURY PRODUCTS-ONLY SHOWCASE (NO PHONE, NO CARDS, 100% SEPARATE PRODUCTS) */}
+            {/* RIGHT COLUMN: 3D LUXURY PRODUCTS (100% SEPARATE & FLOATING, ZERO ROUNDED VIGNETTE/BACKGROUND) */}
             <div className="lg:col-span-6 relative flex items-center justify-center py-2 sm:py-4">
-              {/* Soft Ambient Golden Glow */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-orange-400/20 via-amber-200/25 to-orange-300/15 rounded-full blur-3xl pointer-events-none" />
-
-              {/* Seamless 3D Floating Products Container */}
-              <div className="relative w-full max-w-[560px] aspect-[1200/896] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
+              {/* Seamless 3D Floating Products Container - No Rounded Shape, No Cards, No Touching */}
+              <div className="relative w-full max-w-[580px] aspect-[4/3] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
                 <Image
-                  src="/images/hero-products-only.png"
-                  alt="3D Floating Luxury Products: Quilted Handbag, Wireless Headphones, Smartwatch, Aurora Perfume, and Designer Sneaker"
+                  src="/images/hero-products-isolated.png"
+                  alt="3D Floating Luxury Products: Quilted Handbag, Wireless Headphones, Smartwatch, Ambre Luxe Perfume, and Designer Sneaker"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 560px"
-                  className="object-contain drop-shadow-2xl"
+                  sizes="(max-width: 768px) 100vw, 580px"
+                  className="object-contain drop-shadow-xl"
                 />
 
                 {/* Hotspot 1: Luxury Orange Handbag (Top Left) */}
                 <Link
                   href="/category/fashion"
-                  className="absolute top-[8%] left-[4%] w-[38%] h-[42%] rounded-3xl z-10 cursor-pointer"
+                  className="absolute top-[4%] left-[2%] w-[38%] h-[42%] rounded-3xl z-10 cursor-pointer"
                   title="Shop Luxury Quilted Handbags"
                 />
 
                 {/* Hotspot 2: Wireless Over-Ear Headphones (Top Center) */}
                 <Link
                   href="/category/electronics"
-                  className="absolute top-[4%] left-[40%] w-[32%] h-[46%] rounded-3xl z-10 cursor-pointer"
+                  className="absolute top-[4%] left-[44%] w-[28%] h-[38%] rounded-3xl z-10 cursor-pointer"
                   title="Shop Premium Wireless Headphones"
                 />
 
-                {/* Hotspot 3: Modern Smartwatch (Top Right) */}
+                {/* Hotspot 3: Modern Smartwatch (Middle Right) */}
                 <Link
                   href="/category/electronics"
-                  className="absolute top-[18%] right-[4%] w-[30%] h-[40%] rounded-3xl z-10 cursor-pointer"
+                  className="absolute top-[28%] right-[4%] w-[26%] h-[36%] rounded-3xl z-10 cursor-pointer"
                   title="Shop Smartwatches & Wearables"
                 />
 
-                {/* Hotspot 4: Aurora Luxury Perfume (Bottom Left) */}
+                {/* Hotspot 4: Ambre Luxe Perfume (Bottom Left) */}
                 <Link
                   href="/category/beauty"
-                  className="absolute bottom-[8%] left-[18%] w-[28%] h-[46%] rounded-3xl z-10 cursor-pointer"
+                  className="absolute bottom-[4%] left-[16%] w-[26%] h-[42%] rounded-3xl z-10 cursor-pointer"
                   title="Shop Luxury Fragrances & Perfume"
                 />
 
                 {/* Hotspot 5: Designer Sneaker (Bottom Right) */}
                 <Link
                   href="/category/footwear"
-                  className="absolute bottom-[6%] right-[8%] w-[42%] h-[44%] rounded-3xl z-10 cursor-pointer"
+                  className="absolute bottom-[4%] right-[16%] w-[36%] h-[40%] rounded-3xl z-10 cursor-pointer"
                   title="Shop Designer Sneakers & Footwear"
                 />
               </div>
