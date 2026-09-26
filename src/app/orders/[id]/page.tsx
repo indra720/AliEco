@@ -29,8 +29,8 @@ export default function OrderDetailPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 bg-surface-secondary/40 py-8">
-        <div className="max-w-4xl mx-auto px-4">
+      <main className="flex-1 bg-surface-secondary/40 py-6 sm:py-8">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back link */}
           <Link
             href="/orders"

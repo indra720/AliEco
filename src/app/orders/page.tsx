@@ -23,8 +23,8 @@ export default function OrdersPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 bg-surface-secondary/40 py-8">
-        <div className="max-w-5xl mx-auto px-4">
+      <main className="flex-1 bg-surface-secondary/40 py-6 sm:py-8">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h1 className="text-2xl font-black text-ink">My Orders</h1>

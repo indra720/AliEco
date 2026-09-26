@@ -17,7 +17,7 @@ export default function ProfileDashboardPage() {
   const pendingOrders = ORDERS.filter((o) => o.status !== "delivered" && o.status !== "cancelled").length;
   const deliveredOrders = ORDERS.filter((o) => o.status === "delivered").length;
 
-  const recommendations = PRODUCTS.slice(0, 3);
+  const recommendations = PRODUCTS.slice(0, 4);
 
   return (
     <div className="space-y-6">
@@ -100,7 +100,7 @@ export default function ProfileDashboardPage() {
       {/* Recommended for You */}
       <div>
         <h2 className="text-base font-black text-ink mb-4">Recommended For Your Next Upgrade</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {recommendations.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

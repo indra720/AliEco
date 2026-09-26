@@ -33,11 +33,11 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 bg-surface-secondary/40 py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <main className="flex-1 bg-surface-secondary/40 py-6 sm:py-8">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             {/* Customer Account Sidebar */}
-            <aside className="lg:col-span-3 bg-white p-5 rounded-2xl border border-border shadow-sm">
+            <aside className="lg:col-span-3 xl:col-span-3 bg-white p-5 rounded-2xl border border-border shadow-sm">
               {/* Profile card summary */}
               <div className="flex items-center gap-3 pb-5 mb-5 border-b border-border">
                 <div className="w-12 h-12 rounded-full bg-oranza-50 text-oranza font-bold text-lg flex items-center justify-center flex-shrink-0">
