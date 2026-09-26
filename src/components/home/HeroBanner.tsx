@@ -1,20 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   Sparkles,
   ShoppingBag,
-  Flame,
   Truck,
   ShieldCheck,
   RotateCcw,
 } from "lucide-react";
 
 export function HeroBanner() {
-  const [activeHeroView, setActiveHeroView] = useState<"curated" | "3d-fashion">("curated");
 
   return (
     <section className="w-full bg-white py-3 sm:py-6">
@@ -84,93 +82,104 @@ export function HeroBanner() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: HERO VISUAL SHOWCASE MATCHING SCREENSHOT 2 & PINTEREST 3D FASHION */}
+            {/* RIGHT COLUMN: 3D PROMOTIONAL FLOATING SMARTPHONE SHOWCASE */}
             <div className="lg:col-span-6 relative flex flex-col items-center justify-center">
-              {/* Top View Switcher Tabs */}
-              <div className="self-end mb-3 flex items-center gap-1 bg-white/90 backdrop-blur-md p-1 rounded-xl border border-orange-200/80 shadow-xs z-20">
-                <button
-                  onClick={() => setActiveHeroView("curated")}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                    activeHeroView === "curated"
-                      ? "bg-[#FF6A00] text-white shadow-xs"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <ShoppingBag className="w-3.5 h-3.5" />
-                  <span>Curated Collection</span>
-                </button>
+              {/* Outer 3D Perspective Container */}
+              <div className="relative w-full max-w-[580px] group perspective-[1200px]">
+                {/* Ambient Golden Glowing Aura matching the 3D Studio lighting */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-orange-400/25 via-amber-300/30 to-orange-500/20 rounded-[2.5rem] blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                <button
-                  onClick={() => setActiveHeroView("3d-fashion")}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                    activeHeroView === "3d-fashion"
-                      ? "bg-[#FF6A00] text-white shadow-xs"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  <span>3D Fashion Studio</span>
-                </button>
-              </div>
-
-              {/* View 1: Curated Multi-Product Floating Showcase matching Screenshot 2 */}
-              {activeHeroView === "curated" && (
-                <div className="relative w-full max-w-[560px] aspect-[584/388] rounded-3xl overflow-hidden shadow-xl border-2 border-white/80 bg-white/40 backdrop-blur-xs transition-all duration-300 hover:shadow-2xl group animate-in fade-in zoom-in-95">
+                {/* Main 3D Showcase Card with subtle interactive float & shadow */}
+                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 bg-gradient-to-br from-[#FFF5EC] to-[#FDE8D7] transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-orange-500/20">
                   <Image
-                    src="/images/hero-showcase.png"
-                    alt="Curated Collection: Electronics, Handbag, Sneakers"
+                    src="/images/hero-3d-poster.jpg"
+                    alt="A premium 3D promotional showcase of a white smartphone floating in the air with glowing orange dress and luxury floating fashion accessories"
                     fill
                     priority
-                    sizes="(max-width: 768px) 100vw, 560px"
-                    className="object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    sizes="(max-width: 768px) 100vw, 580px"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
 
-                  {/* Interactive Hotspot Links */}
-                  <Link
-                    href="/category/electronics"
-                    className="absolute top-[8%] left-[6%] w-[42%] h-[58%] rounded-2xl cursor-pointer hover:bg-orange-500/10 transition-colors"
-                    title="Explore Electronics Collection"
-                  />
-                  <Link
-                    href="/category/fashion"
-                    className="absolute top-[12%] right-[4%] w-[50%] h-[82%] rounded-2xl cursor-pointer hover:bg-orange-500/10 transition-colors"
-                    title="Explore Designer Handbags"
-                  />
-                  <Link
-                    href="/category/fashion"
-                    className="absolute bottom-[6%] left-[22%] w-[38%] h-[42%] rounded-2xl cursor-pointer hover:bg-orange-500/10 transition-colors"
-                    title="Explore New Arrival Sneakers"
-                  />
-                </div>
-              )}
-
-              {/* View 2: 3D Fashion Mobile Showcase from Pinterest https://pin.it/6wEnJAJvR */}
-              {activeHeroView === "3d-fashion" && (
-                <div className="relative w-full max-w-[420px] aspect-[9/14] sm:aspect-[9/13] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-gradient-to-b from-[#F5E6DA] via-[#FFF1E6] to-[#FAF0E6] flex items-center justify-center p-4 transition-all duration-300 hover:shadow-2xl animate-in fade-in zoom-in-95 group">
-                  <Image
-                    src="/images/hero-3d-fashion.jpg"
-                    alt="3D Fashion Smartphone Floating Showcase"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 420px"
-                    className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
-                  />
-
-                  {/* Floating 3D Interactive Badge */}
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-orange-200 shadow-md flex items-center gap-1.5 text-xs font-black text-gray-900 z-10 pointer-events-none">
-                    <Sparkles className="w-3.5 h-3.5 text-[#FF6A00] animate-spin" style={{ animationDuration: "6s" }} />
-                    <span>3D Fashion Mobile Studio</span>
+                  {/* Floating 3D Experience Pill Badge */}
+                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-orange-200/80 shadow-md flex items-center gap-2 z-10 pointer-events-none">
+                    <Sparkles className="w-3.5 h-3.5 text-[#FF6A00] animate-pulse" />
+                    <span className="text-[11px] font-black text-gray-900 tracking-wider uppercase">
+                      3D Fashion Studio
+                    </span>
                   </div>
 
+                  {/* Top Right "Virtual Boutique" Tag */}
+                  <div className="absolute top-4 right-4 bg-black/75 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-extrabold text-white tracking-widest uppercase border border-white/20 shadow-xs z-10 pointer-events-none">
+                    Luxe Edition
+                  </div>
+
+                  {/* Interactive Hotspot 1: Center Phone & Glowing Dress */}
                   <Link
                     href="/category/fashion"
-                    className="absolute bottom-5 bg-[#FF6A00] hover:bg-[#E85D00] text-white font-extrabold text-xs px-5 py-2.5 rounded-full shadow-lg shadow-orange-500/35 flex items-center gap-2 z-10 transition-transform hover:scale-105 active:scale-95"
+                    className="absolute top-[16%] left-[34%] w-[32%] h-[68%] rounded-3xl cursor-pointer hover:bg-orange-500/10 transition-colors z-10 group/dress"
+                    title="Shop Bodycon Dress & App Collection"
                   >
-                    <span>Shop 3D Fashion Deals</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span className="sr-only">Shop Dress</span>
                   </Link>
+
+                  {/* Interactive Hotspot 2: Quilted Orange Handbag */}
+                  <Link
+                    href="/category/fashion"
+                    className="absolute bottom-[22%] left-[8%] w-[26%] h-[35%] rounded-2xl cursor-pointer hover:bg-orange-500/10 transition-colors z-10"
+                    title="Shop Quilted Handbags ($120)"
+                  >
+                    <span className="sr-only">Shop Handbag</span>
+                  </Link>
+
+                  {/* Interactive Hotspot 3: Luxury Perfume */}
+                  <Link
+                    href="/category/beauty"
+                    className="absolute top-[32%] left-[12%] w-[16%] h-[24%] rounded-xl cursor-pointer hover:bg-orange-500/10 transition-colors z-10"
+                    title="Shop Luxury Fragrances"
+                  >
+                    <span className="sr-only">Shop Perfume</span>
+                  </Link>
+
+                  {/* Interactive Hotspot 4: High Heels */}
+                  <Link
+                    href="/category/footwear"
+                    className="absolute top-[20%] left-[24%] w-[16%] h-[28%] rounded-xl cursor-pointer hover:bg-orange-500/10 transition-colors z-10"
+                    title="Shop High-Heel Sandals ($350)"
+                  >
+                    <span className="sr-only">Shop High Heels</span>
+                  </Link>
+
+                  {/* Interactive Hotspot 5: Sunglasses & Makeup */}
+                  <Link
+                    href="/category/fashion"
+                    className="absolute top-[24%] right-[14%] w-[28%] h-[36%] rounded-2xl cursor-pointer hover:bg-orange-500/10 transition-colors z-10"
+                    title="Shop Sunglasses & Makeup Palette"
+                  >
+                    <span className="sr-only">Shop Sunglasses & Makeup</span>
+                  </Link>
+
+                  {/* Interactive Hotspot 6: Elegant Loafers */}
+                  <Link
+                    href="/category/footwear"
+                    className="absolute bottom-[16%] right-[18%] w-[24%] h-[24%] rounded-xl cursor-pointer hover:bg-orange-500/10 transition-colors z-10"
+                    title="Shop Elegant Loafers ($75)"
+                  >
+                    <span className="sr-only">Shop Loafers</span>
+                  </Link>
+
+                  {/* Floating Action Button on Hover */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 transition-all duration-300">
+                    <Link
+                      href="/category/fashion"
+                      className="bg-[#FF6A00] hover:bg-[#E85D00] text-white font-extrabold text-xs px-5 py-2.5 rounded-full shadow-lg shadow-orange-500/35 flex items-center gap-2 border border-white/30 backdrop-blur-xs transition-transform hover:scale-105 active:scale-95"
+                    >
+                      <ShoppingBag className="w-3.5 h-3.5" />
+                      <span>Explore 3D Boutique</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
