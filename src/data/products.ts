@@ -166,10 +166,10 @@ export const PRODUCTS: Product[] = [
     stockCount: 92,
     isFeatured: true,
     images: [
-      "https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1622445262464-84b1456045b6?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=800&auto=format&fit=crop&q=80",
     ],
-    thumbnail: "https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=800&auto=format&fit=crop&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1622445262464-84b1456045b6?w=800&auto=format&fit=crop&q=80",
     shortDescription: "Charge phone, smartwatch, and wireless earbuds simultaneously on one sleek minimal foldable stand.",
     description: "Clean up messy bedside cables with this aircraft-grade aluminum charging station. Equipped with temperature protection, foreign object detection, and 15W Qi fast charging for iPhones and Android flagship devices.",
     highlights: [

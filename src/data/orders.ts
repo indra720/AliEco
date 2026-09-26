@@ -22,7 +22,7 @@ export const ORDERS: Order[] = [
       {
         productId: "prod-4",
         title: "OranzaTech 3-in-1 Foldable MagFast Wireless Charging Station",
-        thumbnail: "https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=800&auto=format&fit=crop&q=80",
+        thumbnail: "https://images.unsplash.com/photo-1622445262464-84b1456045b6?w=800&auto=format&fit=crop&q=80",
         price: 1899,
         quantity: 1,
         sellerId: "seller-1",
