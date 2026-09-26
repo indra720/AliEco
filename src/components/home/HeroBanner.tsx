@@ -22,9 +22,9 @@ export function HeroBanner() {
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
             {/* LEFT COLUMN: HERO HEADLINE & CTAs (RESTORED CLEAN & SPACIOUS AS REQUESTED) */}
-            <div className="lg:col-span-6 flex flex-col items-start text-left">
+            <div className="lg:col-span-5 flex flex-col items-start text-left">
               {/* Season Pill Badge */}
               <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-orange-200 shadow-xs mb-5">
                 <Sparkles className="w-4 h-4 text-[#FF6A00] animate-pulse" />
@@ -34,7 +34,7 @@ export function HeroBanner() {
               </div>
 
               {/* Bold Marketplace Headline */}
-              <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-black text-gray-950 tracking-tight leading-[1.08] mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.9rem] xl:text-[3.4rem] font-black text-gray-950 tracking-tight leading-[1.08] mb-4">
                 Discover The Best<br />
                 <span className="text-[#FF6A00]">Products Online.</span>
               </h1>
@@ -82,15 +82,15 @@ export function HeroBanner() {
             </div>
 
             {/* RIGHT COLUMN: 3D LUXURY PRODUCTS (100% SEPARATE & FLOATING, ZERO ROUNDED VIGNETTE/BACKGROUND) */}
-            <div className="lg:col-span-6 relative flex items-center justify-center py-2 sm:py-4">
-              {/* Seamless 3D Floating Products Container - No Rounded Shape, No Cards, No Touching */}
-              <div className="relative w-full max-w-[580px] aspect-[4/3] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
+            <div className="lg:col-span-7 relative flex items-center justify-center lg:justify-end py-2 sm:py-4">
+              {/* Seamless 3D Floating Products Container - Expanded to fill middle void and balance layout */}
+              <div className="relative w-full max-w-[680px] xl:max-w-[740px] aspect-[4/3] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-[1.02] group">
                 <Image
                   src="/images/hero-products-isolated.png"
                   alt="3D Floating Luxury Products: Quilted Handbag, Wireless Headphones, Smartwatch, Ambre Luxe Perfume, and Designer Sneaker"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 580px"
+                  sizes="(max-width: 768px) 100vw, 740px"
                   className="object-contain drop-shadow-xl"
                 />
 
