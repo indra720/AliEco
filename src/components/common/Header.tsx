@@ -28,12 +28,17 @@ import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { useCompare } from "@/context/CompareContext";
 import { useAuth } from "@/context/AuthContext";
+import { useNotification } from "@/context/NotificationContext";
 
 export function Header() {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
+
+  const [isLangModalOpen, setIsLangModalOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [selectedCurrency, setSelectedCurrency] = useState("INR - Indian Rupee");
 
   const accountDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -43,6 +48,29 @@ export function Header() {
   const { wishlistCount } = useWishlist();
   const { compareCount } = useCompare();
   const { user, role, switchRole, logout } = useAuth();
+  const { showToast } = useNotification();
+
+  useEffect(() => {
+    try {
+      const savedLang = localStorage.getItem("oranza_lang");
+      if (savedLang) setSelectedLanguage(savedLang);
+      const savedCurr = localStorage.getItem("oranza_currency");
+      if (savedCurr) setSelectedCurrency(savedCurr);
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const handleSaveLangCurrency = () => {
+    try {
+      localStorage.setItem("oranza_lang", selectedLanguage);
+      localStorage.setItem("oranza_currency", selectedCurrency);
+    } catch {
+      // ignore
+    }
+    setIsLangModalOpen(false);
+    showToast(`Preferences saved: ${selectedLanguage} | ${selectedCurrency.split(" - ")[0]}`);
+  };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -134,7 +162,7 @@ export function Header() {
         </div>
 
         {/* Center-Right: Delivery Pincode, Language/Currency & Portal Switcher */}
-        <div className="hidden xl:flex items-center gap-5 text-xs text-gray-700 font-medium">
+        <div className="hidden xl:flex items-center gap-4 text-xs text-gray-700 font-medium">
           {/* Deliver to India */}
           <div className="flex items-center gap-2 cursor-pointer hover:text-brand-orange transition-colors">
             <span className="text-base">🇮🇳</span>
@@ -143,6 +171,20 @@ export function Header() {
               <span className="font-bold text-gray-900">India, 400011</span>
             </div>
           </div>
+
+          {/* Language & Currency Trigger Button (Opens Popup Modal as in Screenshot) */}
+          <button
+            type="button"
+            onClick={() => setIsLangModalOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-gray-200 hover:border-brand-orange bg-gray-50/80 hover:bg-white text-gray-800 hover:text-brand-orange transition-all cursor-pointer group shadow-2xs"
+            title="Set language and currency"
+          >
+            <Globe className="w-4 h-4 text-brand-orange shrink-0" />
+            <span className="font-bold text-xs">{selectedLanguage}</span>
+            <span className="text-gray-300">/</span>
+            <span className="font-bold text-xs text-gray-600">{selectedCurrency.split(" - ")[0]}</span>
+            <ChevronDown className="w-3.5 h-3.5 text-gray-400 group-hover:text-brand-orange transition-colors" />
+          </button>
 
           {/* Quick Portal Switcher (Customer / Seller / Admin) */}
           <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-xl border border-gray-200">
@@ -503,6 +545,105 @@ export function Header() {
               <Link href="/seller" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-orange">
                 Sell on ORANZA
               </Link>
+
+              {/* Mobile Language & Currency button */}
+              <div className="pt-3 border-t border-gray-100">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsLangModalOpen(true);
+                  }}
+                  className="w-full flex items-center justify-between p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs font-bold text-gray-800"
+                >
+                  <div className="flex items-center gap-2">
+                    <Globe className="w-4 h-4 text-brand-orange" />
+                    <span>Language & Currency</span>
+                  </div>
+                  <span className="text-[#FF6A00] font-black">{selectedLanguage} / {selectedCurrency.split(" - ")[0]}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 4. SET LANGUAGE AND CURRENCY POPUP MODAL (Exact match to screenshot) */}
+      {isLangModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 max-w-sm sm:max-w-md w-full shadow-2xl border border-gray-100 relative animate-in zoom-in-95 duration-150">
+            {/* Close button */}
+            <button
+              type="button"
+              onClick={() => setIsLangModalOpen(false)}
+              className="absolute top-5 right-5 p-1 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Modal Heading */}
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 tracking-tight">
+              Set language and currency
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1 mb-5 leading-relaxed">
+              Select your preferred language and currency. You can update the settings at any time.
+            </p>
+
+            <div className="space-y-4">
+              {/* Language Selection */}
+              <div>
+                <label className="block text-xs sm:text-sm font-medium text-gray-800 mb-1.5">
+                  Language
+                </label>
+                <div className="relative">
+                  <select
+                    value={selectedLanguage}
+                    onChange={(e) => setSelectedLanguage(e.target.value)}
+                    className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 outline-none focus:border-[#FF6A00] appearance-none pr-10 font-normal cursor-pointer"
+                  >
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi (हिन्दी)</option>
+                    <option value="Bengali">Bengali (বাংলা)</option>
+                    <option value="Spanish">Spanish (Español)</option>
+                    <option value="French">French (Français)</option>
+                    <option value="German">German (Deutsch)</option>
+                    <option value="Arabic">Arabic (العربية)</option>
+                  </select>
+                  <ChevronDown className="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Currency Selection */}
+              <div>
+                <label className="block text-xs sm:text-sm font-medium text-gray-800 mb-1.5">
+                  Currency
+                </label>
+                <div className="relative">
+                  <select
+                    value={selectedCurrency}
+                    onChange={(e) => setSelectedCurrency(e.target.value)}
+                    className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 outline-none focus:border-[#FF6A00] appearance-none pr-10 font-normal cursor-pointer"
+                  >
+                    <option value="INR - Indian Rupee">INR - Indian Rupee</option>
+                    <option value="USD - US Dollar">USD - US Dollar</option>
+                    <option value="EUR - Euro">EUR - Euro</option>
+                    <option value="GBP - British Pound">GBP - British Pound</option>
+                    <option value="AED - UAE Dirham">AED - UAE Dirham</option>
+                    <option value="CAD - Canadian Dollar">CAD - Canadian Dollar</option>
+                  </select>
+                  <ChevronDown className="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Save Button */}
+              <button
+                type="button"
+                onClick={handleSaveLangCurrency}
+                className="w-full bg-[#FF6A00] hover:bg-[#E85D00] text-white font-bold py-3 px-6 rounded-full text-sm transition-all shadow-md active:scale-95 mt-6 cursor-pointer"
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>
