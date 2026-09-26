@@ -52,6 +52,13 @@ export interface Product {
   variants?: ProductVariant[];
 }
 
+export interface SubCategoryGroup {
+  id: string;
+  name: string;
+  slug: string;
+  subcategories: string[];
+}
+
 export interface Category {
   id: string;
   name: string;
@@ -62,6 +69,7 @@ export interface Category {
   productCount: number;
   featured?: boolean;
   subcategories?: string[];
+  groups?: SubCategoryGroup[];
 }
 
 export interface Brand {

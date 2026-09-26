@@ -194,10 +194,10 @@ export function ProductCard({ product, layout = "grid" }: ProductCardProps) {
         onMouseLeave={() => setIsHovered(false)}
         className="group relative flex flex-col bg-white rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden"
       >
-        {/* Top Product Image: Aspect 3/4 with Smooth Image Flip on Hover */}
-        <div className="relative aspect-[3/4] w-full bg-[#f8f9fa] overflow-hidden">
+        {/* Top Product Image: Compact Aspect with Smooth Image Flip on Hover */}
+        <div className="relative aspect-[4/4.2] w-full bg-[#f8f9fa] overflow-hidden">
           <Link href={`/products/${product.slug}`} className="block w-full h-full relative">
-            {/* Primary Image (fades out on hover if secondary image exists) */}
+            {/* Primary Image */}
             <Image
               src={primaryImage}
               alt={product.title}
@@ -208,7 +208,7 @@ export function ProductCard({ product, layout = "grid" }: ProductCardProps) {
               }`}
             />
 
-            {/* Secondary Image (fades in on hover) */}
+            {/* Secondary Image */}
             {secondaryImage && secondaryImage !== primaryImage && (
               <Image
                 src={secondaryImage}
@@ -224,17 +224,17 @@ export function ProductCard({ product, layout = "grid" }: ProductCardProps) {
 
           {/* Top Left Discount Tag matching Screenshot */}
           {product.discountPercent > 0 && (
-            <span className="absolute top-3 left-3 z-20 bg-[#ff4d4f] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-xs tracking-wide">
+            <span className="absolute top-2.5 left-2.5 z-20 bg-[#ff4d4f] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-xs tracking-wide">
               {product.discountPercent}%
             </span>
           )}
 
           {/* Stack of 3 Circular Action Buttons on Top Right matching Screenshot */}
-          <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
+          <div className="absolute top-2.5 right-2.5 z-20 flex flex-col gap-1.5">
             {/* 1. Quick View / Maximize Button */}
             <button
               onClick={handleQuickView}
-              className="w-8 h-8 rounded-full bg-white shadow-md border border-gray-150 flex items-center justify-center text-gray-700 hover:text-brand-orange hover:border-brand-orange hover:scale-110 active:scale-90 transition-all"
+              className="w-7.5 h-7.5 sm:w-8 sm:h-8 rounded-full bg-white shadow-md border border-gray-150 flex items-center justify-center text-gray-700 hover:text-brand-orange hover:border-brand-orange hover:scale-110 active:scale-90 transition-all"
               title="Quick View Modal"
               aria-label="Quick View"
             >
@@ -244,7 +244,7 @@ export function ProductCard({ product, layout = "grid" }: ProductCardProps) {
             {/* 2. Compare Button */}
             <button
               onClick={handleToggleCompare}
-              className={`w-8 h-8 rounded-full shadow-md border flex items-center justify-center transition-all hover:scale-110 active:scale-90 ${
+              className={`w-7.5 h-7.5 sm:w-8 sm:h-8 rounded-full shadow-md border flex items-center justify-center transition-all hover:scale-110 active:scale-90 ${
                 isCompared
                   ? "bg-brand-orange text-white border-brand-orange"
                   : "bg-white text-gray-700 border-gray-150 hover:text-brand-orange hover:border-brand-orange"
@@ -258,7 +258,7 @@ export function ProductCard({ product, layout = "grid" }: ProductCardProps) {
             {/* 3. Wishlist Heart Button */}
             <button
               onClick={handleToggleWishlist}
-              className={`w-8 h-8 rounded-full shadow-md border flex items-center justify-center transition-all hover:scale-110 active:scale-90 ${
+              className={`w-7.5 h-7.5 sm:w-8 sm:h-8 rounded-full shadow-md border flex items-center justify-center transition-all hover:scale-110 active:scale-90 ${
                 isWishlisted
                   ? "bg-white text-[#ff4d4f] border-red-200 fill-[#ff4d4f]"
                   : "bg-white text-gray-700 border-gray-150 hover:text-[#ff4d4f]"
@@ -272,7 +272,7 @@ export function ProductCard({ product, layout = "grid" }: ProductCardProps) {
         </div>
 
         {/* Clean, Elegant Information Block matching Screenshot */}
-        <div className="flex-1 flex flex-col p-4">
+        <div className="flex-1 flex flex-col p-3 sm:p-3.5">
           {/* Brand Name */}
           <span className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider mb-1 block">
             {product.brand}

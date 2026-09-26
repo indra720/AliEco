@@ -245,15 +245,6 @@ export function HeroBanner() {
                 <span>{currentProduct.badge}</span>
               </div>
 
-              {/* Interactive 360° Fast Spin Button */}
-              <button
-                onClick={handleFastSpinBurst}
-                className="absolute top-0 left-2 sm:left-6 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-gray-200 shadow-md text-xs font-black text-gray-800 hover:text-brand-orange hover:border-brand-orange flex items-center gap-1.5 z-30 transition-all hover:scale-105 active:scale-95"
-                title="Click to spin product 360 degrees"
-              >
-                <RotateCw className={`w-3.5 h-3.5 text-brand-orange ${isFastSpinning ? "animate-spin" : ""}`} />
-                <span>360° Spin Burst</span>
-              </button>
 
               {/* 3D PRODUCT SHOWCASE STAGE */}
               <div className="relative w-full max-w-md flex flex-col items-center pt-8 pb-4">
